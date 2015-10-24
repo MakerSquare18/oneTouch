@@ -8,7 +8,8 @@
   //   preferences: [ 
   //     {
   //       merchantId: merchantId,
-  //       itemId: itemId
+  //       itemId: itemId,
+  //        pricce: price
   //     }
   //   ]
   // }
@@ -40,5 +41,21 @@ var db = {
   users: {},
   merchants: {},
 };
+
+var getMerchantById = function(merchantId) {
+  
+};
+
+/*
+ * Require userId 
+ */
+var getUserPreferences = function(username, itemId) {
+  var _merchants = this.merchants;
+  for (var _merchant in _merchants) {
+    _merchants[_merchants].items[itemId];
+  }
+};
+
+db.getUserPreferences = getUserPreferences;
 
 module.exports = db;
