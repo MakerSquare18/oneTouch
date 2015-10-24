@@ -9,16 +9,20 @@ var app = express();
 app.use(bodyParser.json());
 
 // Paypal Auth Routes
-app.get('/login/paypal/:merchantId', paypal.obtainConsent);
-app.get('/auth/paypal', paypal.captureAuthorizationCode, routeHandlers.paypalAuth);
+app.get('api/login/paypal/:merchantId', paypal.obtainConsent);
+app.get('api/auth/paypal', paypal.captureAuthorizationCode, routeHandlers.paypalAuth);
+
+// Payment
+// app.post('/api/payment/:username', routeHandlers.createUserPayment);
 
 // User Management Routes
-app.post('/merchant', routeHandlers.createMerchant);
-app.post('/merchant/item', routeHandlers.createMerchantItem);
-app.post('/user', routeHandlers.createUser);
-app.post('/user/item', routeHandlers.createUserPreference);
-app.get('/items', routeHandlers.getAllItems);
-app.get('/user/:username/items', routeHandlers.getUserPreferences);
+app.post('api/merchant', routeHandlers.createMerchant);
+app.post('api/merchant/item', routeHandlers.createMerchantItem);
+app.post('api/user', routeHandlers.createUser);
+app.post('api/user/item', routeHandlers.createUserPreference);
+app.get('api/items', routeHandlers.getAllItems);
+// app.get('api/user/:username/items', routeHandlers.getUserPreferences);
+app.get('api/user/:username', routeHandlers.getUserPreferences);
 
 app.listen(config.port, function() {
   paypal.authenticateServer()
