@@ -6,9 +6,11 @@ angular.module('myApp', [
   'myApp.user',
   'myApp.merchant',
   'myApp.version',
-  'myApp.merchantAuth',
-  'myApp.userAuth'
+  'myApp.auth',
+  'myApp.home',
+  'ui.bootstrap'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/user'});
 }]);
+
