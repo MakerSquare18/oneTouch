@@ -3,3 +3,4 @@ client/node_modules/
 client/bower_components/
 .DS_Store
 .idea
+server/node_modules
