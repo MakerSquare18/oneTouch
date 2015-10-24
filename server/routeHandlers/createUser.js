@@ -17,11 +17,10 @@ module.exports = function createUser(req, res) {
   // db.createUser(newUser);
 
   paypal.storeCreditCard(db.paypalServerAuth.token, newUsername, newUserCreditCard)
-  .then(function(response) {
-    console.log(response);
-    // db.merchants[newUsername]
-    //  res.send(db.merchants[newUsername]);
+  .then(function(creditCardVault) {
+    newUser.creditCard = creditCardVault.id;
+    db.users[newUsername] = newUser;
+    res.send("User created successfully");
   });
-
-
 };
+

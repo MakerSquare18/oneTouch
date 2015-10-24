@@ -3,7 +3,8 @@
   //   preferences: [
   //     {
   //       merchantId: merchantId,
-  //       itemId: itemId
+  //       itemId: itemId,
+  //        pricce: price
   //     }
   //   ]
   //   profileImg

@@ -1,0 +1,781 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		130EE4481BDC437700218E0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130EE4471BDC437700218E0A /* Alamofire.framework */; };
+		130EE44A1BDC437900218E0A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130EE4491BDC437900218E0A /* SwiftyJSON.framework */; };
+		132506491BDC4233005BF839 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132506481BDC4233005BF839 /* AppDelegate.swift */; };
+		1325064B1BDC4233005BF839 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325064A1BDC4233005BF839 /* ViewController.swift */; };
+		1325064E1BDC4233005BF839 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1325064C1BDC4233005BF839 /* Main.storyboard */; };
+		132506501BDC4233005BF839 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1325064F1BDC4233005BF839 /* Assets.xcassets */; };
+		132506531BDC4233005BF839 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 132506511BDC4233005BF839 /* LaunchScreen.storyboard */; };
+		1325066E1BDC4233005BF839 /* oneTouch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1325066D1BDC4233005BF839 /* oneTouch WatchKit App.app */; };
+		132506741BDC4233005BF839 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 132506721BDC4233005BF839 /* Interface.storyboard */; };
+		132506761BDC4233005BF839 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132506751BDC4233005BF839 /* Assets.xcassets */; };
+		1325067D1BDC4233005BF839 /* oneTouch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1325067C1BDC4233005BF839 /* oneTouch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		132506841BDC4233005BF839 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132506831BDC4233005BF839 /* InterfaceController.swift */; };
+		132506861BDC4233005BF839 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132506851BDC4233005BF839 /* ExtensionDelegate.swift */; };
+		132506881BDC4233005BF839 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132506871BDC4233005BF839 /* NotificationController.swift */; };
+		1325068A1BDC4233005BF839 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132506891BDC4233005BF839 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1325065A1BDC4233005BF839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1325063D1BDC4233005BF839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 132506441BDC4233005BF839;
+			remoteInfo = oneTouch;
+		};
+		132506651BDC4233005BF839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1325063D1BDC4233005BF839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 132506441BDC4233005BF839;
+			remoteInfo = oneTouch;
+		};
+		1325066F1BDC4233005BF839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1325063D1BDC4233005BF839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1325066C1BDC4233005BF839;
+			remoteInfo = "oneTouch WatchKit App";
+		};
+		1325067E1BDC4233005BF839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1325063D1BDC4233005BF839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1325067B1BDC4233005BF839;
+			remoteInfo = "oneTouch WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		132506911BDC4233005BF839 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1325067D1BDC4233005BF839 /* oneTouch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506951BDC4233005BF839 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1325066E1BDC4233005BF839 /* oneTouch WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		130EE4471BDC437700218E0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
+		130EE4491BDC437900218E0A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		132506451BDC4233005BF839 /* oneTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		132506481BDC4233005BF839 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1325064A1BDC4233005BF839 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1325064D1BDC4233005BF839 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1325064F1BDC4233005BF839 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		132506521BDC4233005BF839 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		132506541BDC4233005BF839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		132506591BDC4233005BF839 /* oneTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = oneTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		132506641BDC4233005BF839 /* oneTouchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = oneTouchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1325066D1BDC4233005BF839 /* oneTouch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oneTouch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		132506731BDC4233005BF839 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		132506751BDC4233005BF839 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		132506771BDC4233005BF839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1325067C1BDC4233005BF839 /* oneTouch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "oneTouch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		132506821BDC4233005BF839 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		132506831BDC4233005BF839 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		132506851BDC4233005BF839 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		132506871BDC4233005BF839 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		132506891BDC4233005BF839 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1325068B1BDC4233005BF839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		132506421BDC4233005BF839 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506561BDC4233005BF839 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506611BDC4233005BF839 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506791BDC4233005BF839 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				130EE4481BDC437700218E0A /* Alamofire.framework in Frameworks */,
+				130EE44A1BDC437900218E0A /* SwiftyJSON.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1325063C1BDC4233005BF839 = {
+			isa = PBXGroup;
+			children = (
+				130EE4491BDC437900218E0A /* SwiftyJSON.framework */,
+				130EE4471BDC437700218E0A /* Alamofire.framework */,
+				132506471BDC4233005BF839 /* oneTouch */,
+				132506711BDC4233005BF839 /* oneTouch WatchKit App */,
+				132506801BDC4233005BF839 /* oneTouch WatchKit Extension */,
+				132506461BDC4233005BF839 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		132506461BDC4233005BF839 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				132506451BDC4233005BF839 /* oneTouch.app */,
+				132506591BDC4233005BF839 /* oneTouchTests.xctest */,
+				132506641BDC4233005BF839 /* oneTouchUITests.xctest */,
+				1325066D1BDC4233005BF839 /* oneTouch WatchKit App.app */,
+				1325067C1BDC4233005BF839 /* oneTouch WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		132506471BDC4233005BF839 /* oneTouch */ = {
+			isa = PBXGroup;
+			children = (
+				132506481BDC4233005BF839 /* AppDelegate.swift */,
+				1325064A1BDC4233005BF839 /* ViewController.swift */,
+				1325064C1BDC4233005BF839 /* Main.storyboard */,
+				1325064F1BDC4233005BF839 /* Assets.xcassets */,
+				132506511BDC4233005BF839 /* LaunchScreen.storyboard */,
+				132506541BDC4233005BF839 /* Info.plist */,
+			);
+			path = oneTouch;
+			sourceTree = "<group>";
+		};
+		132506711BDC4233005BF839 /* oneTouch WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				132506721BDC4233005BF839 /* Interface.storyboard */,
+				132506751BDC4233005BF839 /* Assets.xcassets */,
+				132506771BDC4233005BF839 /* Info.plist */,
+			);
+			path = "oneTouch WatchKit App";
+			sourceTree = "<group>";
+		};
+		132506801BDC4233005BF839 /* oneTouch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				132506831BDC4233005BF839 /* InterfaceController.swift */,
+				132506851BDC4233005BF839 /* ExtensionDelegate.swift */,
+				132506871BDC4233005BF839 /* NotificationController.swift */,
+				132506891BDC4233005BF839 /* Assets.xcassets */,
+				1325068B1BDC4233005BF839 /* Info.plist */,
+				132506811BDC4233005BF839 /* Supporting Files */,
+			);
+			path = "oneTouch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		132506811BDC4233005BF839 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				132506821BDC4233005BF839 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		132506441BDC4233005BF839 /* oneTouch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 132506961BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouch" */;
+			buildPhases = (
+				132506411BDC4233005BF839 /* Sources */,
+				132506421BDC4233005BF839 /* Frameworks */,
+				132506431BDC4233005BF839 /* Resources */,
+				132506951BDC4233005BF839 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				132506701BDC4233005BF839 /* PBXTargetDependency */,
+			);
+			name = oneTouch;
+			productName = oneTouch;
+			productReference = 132506451BDC4233005BF839 /* oneTouch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		132506581BDC4233005BF839 /* oneTouchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 132506991BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouchTests" */;
+			buildPhases = (
+				132506551BDC4233005BF839 /* Sources */,
+				132506561BDC4233005BF839 /* Frameworks */,
+				132506571BDC4233005BF839 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1325065B1BDC4233005BF839 /* PBXTargetDependency */,
+			);
+			name = oneTouchTests;
+			productName = oneTouchTests;
+			productReference = 132506591BDC4233005BF839 /* oneTouchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		132506631BDC4233005BF839 /* oneTouchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1325069C1BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouchUITests" */;
+			buildPhases = (
+				132506601BDC4233005BF839 /* Sources */,
+				132506611BDC4233005BF839 /* Frameworks */,
+				132506621BDC4233005BF839 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				132506661BDC4233005BF839 /* PBXTargetDependency */,
+			);
+			name = oneTouchUITests;
+			productName = oneTouchUITests;
+			productReference = 132506641BDC4233005BF839 /* oneTouchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		1325066C1BDC4233005BF839 /* oneTouch WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 132506921BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouch WatchKit App" */;
+			buildPhases = (
+				1325066B1BDC4233005BF839 /* Resources */,
+				132506911BDC4233005BF839 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1325067F1BDC4233005BF839 /* PBXTargetDependency */,
+			);
+			name = "oneTouch WatchKit App";
+			productName = "oneTouch WatchKit App";
+			productReference = 1325066D1BDC4233005BF839 /* oneTouch WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1325067B1BDC4233005BF839 /* oneTouch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1325068E1BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouch WatchKit Extension" */;
+			buildPhases = (
+				132506781BDC4233005BF839 /* Sources */,
+				132506791BDC4233005BF839 /* Frameworks */,
+				1325067A1BDC4233005BF839 /* Resources */,
+				130EE44B1BDC439300218E0A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "oneTouch WatchKit Extension";
+			productName = "oneTouch WatchKit Extension";
+			productReference = 1325067C1BDC4233005BF839 /* oneTouch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1325063D1BDC4233005BF839 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = MakerSquare18;
+				TargetAttributes = {
+					132506441BDC4233005BF839 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					132506581BDC4233005BF839 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 132506441BDC4233005BF839;
+					};
+					132506631BDC4233005BF839 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 132506441BDC4233005BF839;
+					};
+					1325066C1BDC4233005BF839 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					1325067B1BDC4233005BF839 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 132506401BDC4233005BF839 /* Build configuration list for PBXProject "oneTouch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1325063C1BDC4233005BF839;
+			productRefGroup = 132506461BDC4233005BF839 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				132506441BDC4233005BF839 /* oneTouch */,
+				132506581BDC4233005BF839 /* oneTouchTests */,
+				132506631BDC4233005BF839 /* oneTouchUITests */,
+				1325066C1BDC4233005BF839 /* oneTouch WatchKit App */,
+				1325067B1BDC4233005BF839 /* oneTouch WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		132506431BDC4233005BF839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				132506531BDC4233005BF839 /* LaunchScreen.storyboard in Resources */,
+				132506501BDC4233005BF839 /* Assets.xcassets in Resources */,
+				1325064E1BDC4233005BF839 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506571BDC4233005BF839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506621BDC4233005BF839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1325066B1BDC4233005BF839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				132506761BDC4233005BF839 /* Assets.xcassets in Resources */,
+				132506741BDC4233005BF839 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1325067A1BDC4233005BF839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1325068A1BDC4233005BF839 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		130EE44B1BDC439300218E0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/watchOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		132506411BDC4233005BF839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1325064B1BDC4233005BF839 /* ViewController.swift in Sources */,
+				132506491BDC4233005BF839 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506551BDC4233005BF839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506601BDC4233005BF839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		132506781BDC4233005BF839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				132506881BDC4233005BF839 /* NotificationController.swift in Sources */,
+				132506861BDC4233005BF839 /* ExtensionDelegate.swift in Sources */,
+				132506841BDC4233005BF839 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1325065B1BDC4233005BF839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 132506441BDC4233005BF839 /* oneTouch */;
+			targetProxy = 1325065A1BDC4233005BF839 /* PBXContainerItemProxy */;
+		};
+		132506661BDC4233005BF839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 132506441BDC4233005BF839 /* oneTouch */;
+			targetProxy = 132506651BDC4233005BF839 /* PBXContainerItemProxy */;
+		};
+		132506701BDC4233005BF839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1325066C1BDC4233005BF839 /* oneTouch WatchKit App */;
+			targetProxy = 1325066F1BDC4233005BF839 /* PBXContainerItemProxy */;
+		};
+		1325067F1BDC4233005BF839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1325067B1BDC4233005BF839 /* oneTouch WatchKit Extension */;
+			targetProxy = 1325067E1BDC4233005BF839 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1325064C1BDC4233005BF839 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1325064D1BDC4233005BF839 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		132506511BDC4233005BF839 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				132506521BDC4233005BF839 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		132506721BDC4233005BF839 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				132506731BDC4233005BF839 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1325068C1BDC4233005BF839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1325068D1BDC4233005BF839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1325068F1BDC4233005BF839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "oneTouch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouch.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		132506901BDC4233005BF839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "oneTouch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouch.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		132506931BDC4233005BF839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = oneTouch_WatchKit_Extension;
+				INFOPLIST_FILE = "oneTouch WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		132506941BDC4233005BF839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = oneTouch_WatchKit_Extension;
+				INFOPLIST_FILE = "oneTouch WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		132506971BDC4233005BF839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = oneTouch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		132506981BDC4233005BF839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = oneTouch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1325069A1BDC4233005BF839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = oneTouchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oneTouch.app/oneTouch";
+			};
+			name = Debug;
+		};
+		1325069B1BDC4233005BF839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = oneTouchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oneTouch.app/oneTouch";
+			};
+			name = Release;
+		};
+		1325069D1BDC4233005BF839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = oneTouchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = oneTouch;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		1325069E1BDC4233005BF839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = oneTouchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oneTouchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = oneTouch;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		132506401BDC4233005BF839 /* Build configuration list for PBXProject "oneTouch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1325068C1BDC4233005BF839 /* Debug */,
+				1325068D1BDC4233005BF839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1325068E1BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1325068F1BDC4233005BF839 /* Debug */,
+				132506901BDC4233005BF839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		132506921BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouch WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				132506931BDC4233005BF839 /* Debug */,
+				132506941BDC4233005BF839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		132506961BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				132506971BDC4233005BF839 /* Debug */,
+				132506981BDC4233005BF839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		132506991BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1325069A1BDC4233005BF839 /* Debug */,
+				1325069B1BDC4233005BF839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1325069C1BDC4233005BF839 /* Build configuration list for PBXNativeTarget "oneTouchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1325069D1BDC4233005BF839 /* Debug */,
+				1325069E1BDC4233005BF839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1325063D1BDC4233005BF839 /* Project object */;
+}
