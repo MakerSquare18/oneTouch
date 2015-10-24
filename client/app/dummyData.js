@@ -1,2 +1,5 @@
-var userData = {profImageUrl: "http://vignette3.wikia.nocookie.net/60seconds/images/0/02/Filepicker-cu8RtvHTyLM2781g44RQ_YOLO.jpg/revision/latest?cb=20150918035211",
-                currentItems: {}}
+var userData = {username: "xX_W33D_Wizard_420_Xx",
+                preferences: preferences.slice(0,3),
+              }
+
+var preferences = [{}]
