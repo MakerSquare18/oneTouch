@@ -1,5 +1,19 @@
 <div class="container">
-  <div class="image">
-    <img src="http://vignette3.wikia.nocookie.net/60seconds/images/0/02/Filepicker-cu8RtvHTyLM2781g44RQ_YOLO.jpg/revision/latest?cb=20150918035211" height="100" width="100"> 
+  <div class="header">
+    Welcome, {{userData.username}}
+  </div>
+  <div class="image" id="profile-image">
+    <img ng-src={{userData.profileImg}} height="200" width="200">
+  </div>
+  <div id="user-items">
+    <div ng-repeat="item in userData.userItems">
+      <div class="user-item">
+        <img ng-src={{item.url}} id="icon" height="100" width="100">
+        <div>{{item.merchant}}</div>
+        <div>{{item.name}}</div>
+        <div>{{item.price}}</div>
+        <div>{{item.description}}</div>
+      </div>
+    </div>
   </div>
 </div>
