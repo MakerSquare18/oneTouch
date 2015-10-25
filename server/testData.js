@@ -23,16 +23,16 @@ db.createMerchant({
     name: "starbucks"
   },
   items: [
-  {
-    name: "Latte",
-    price: 3.25,
-    description: "Delicious latte"
-  },
-  {
-    name: "better Latte",
-    price: 6.00,
-    description: "Delicious latte"
-  },
+  // {
+  //   name: "Latte",
+  //   price: 3.25,
+  //   description: "Delicious latte"
+  // },
+  // {
+  //   name: "better Latte",
+  //   price: 6.00,
+  //   description: "Delicious latte"
+  // },
   ]
 });
 
@@ -51,3 +51,22 @@ var newPreferenceIndex = db.users[newPreferenceUsername].preferences.push({
   merchantId: newPreferenceMerchantId,
   itemId: newPreferenceItemId
 });
+
+// test itemTable junction table
+
+db.createMerchantItem({
+  name: "burrito",
+  price: 7.00,
+  description: "Tasty burrito",
+  merchantId: "starbucks"
+});
+
+db.createMerchantItem({
+  name: "wrap",
+  price: 7.00,
+  description: "Tasty wrap",
+  merchantId: "starbucks"
+})
+
+console.log(db.itemsTable);
+console.log(db.merchants["starbucks"].items);

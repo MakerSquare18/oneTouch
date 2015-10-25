@@ -21,12 +21,20 @@
   //     price:,
   //     icon,   --- url string
   //     description --- string
+  //     external_items_key: items[key]
   //   },
   //     {
   //
   //     }
   //   ],
   // }
+
+  // id autoIncremental
+  // itemTable : [{
+  //   g_itemId: currIdx,      // itemTableArrayIndex
+  //   merchantItemId: connectionKey
+  // }]
+  //
 
 var db = {
   paypalServerAuth: {
@@ -35,6 +43,7 @@ var db = {
   },
   users: {},
   merchants: {},
+  itemsTable: []
 };
 
 // var createUser = function(userInfo, callback) { shall we make it async?
@@ -57,23 +66,82 @@ var createMerchant = function(merchantObj) {
   db.merchants[merchantObj.merchantName] = merchantObj;
 }
 
+// update merchant table global key and item global table merchant localkey
+var createMerchantItem = function(itemObj) {
+  itemObj._g_itemId = db.itemsTable.length;
+  var _merchantItemId = db.merchants[itemObj.merchantId].items.push(itemObj);
+  db.itemsTable.push({
+    merchantItemId: _merchantItemId - 1,
+    merchantId: itemObj.merchantId
+  });
+}
+
+// input username
+var createUserPreference = function(preferenceObj) {
+  var _username = preferenceObj.username;
+
+  db.users[_username].preferences.push({
+    merchantId: preferenceObj.merchantId,
+    itemId: preferenceObj.itemId //g_itemId in itemsTable
+  });
+
+  if (db.users[_username] === undefined) {
+    return Error("" + _username + " does not exist!!");
+  }
+};
+
 // return user obj
 var getUserByName = function(username) {
   if (db.users[username] !== undefined) { return db[username]; }
   return Error("" + "could not find user: " + username);
 }
 
-var getItemIdByUserPreference = function(itemId, username) {
+var getIteminfoByUserPreference = function(itemId, username) {
   var _preferences = db.users[username].preferences;
   _preferences.forEach(function(preference) {
     if (preference[itemId] === itemId) {
-      return preference[merchantId].merchantId;
+      return preference[merchantId].merchantId.items[itemId];
     }
   })
   return Error("" + itemId + "by user: " + username + "could not be found");
 }
 
-var getMixinPrefListByusername = function(username) {
+var getMerchantItemInfoFromTableId = function(g_itemId) {
+  var _g_itemId = parseInt(g_itemId)
+  var _merchantId = db.itemsTable[_g_itemId].merchantId;
+  var _itemId = db.itemsTable[g_itemId].merchantItemId;
+
+  return db.merchants[_merchantId].items[_itemId];
+}
+
+// input g_itemId in itemsTable
+var getUserPrefListByUsername = function(username) {
+  var userInfoMixin = {};
+  var fullPreferenceList = {};
+  var preferenceMixin = [];
+  var _merchantId, _itemId, _itemInfo;
+
+  db.users[username].preferences.forEach(function(preference) {
+    _merchantId = preference.merchantId;
+    _g_itemId = preference.itemId;
+
+    _itemInfo = getMerchantItemInfoFromTableId(_g_itemId);
+    // query junction table with g_itemOd to find merchant private itemId
+    preferenceMixin.push({
+      // db.merchants[_merchantId].
+      itemInfo: _itemInfo,
+      itemId: _g_itemId,
+      merchantId: _merchantId
+    });
+  });
+
+  userInfoMixin["username"] = username;
+  userInfoMixin["profileImg"] = db.users[username].profileImg;
+  userInfoMixin.preferences = preferenceMixin;
+  return userInfoMixin;
+}
+
+var getMixinPrefListByUsername = function(username) {
   var userInfoMixin = {};
   var preferenceMixin = [];
   var _merchantId, _itemId;
@@ -96,10 +164,17 @@ var getMixinPrefListByusername = function(username) {
 
 // var createUserPreference = function(itemId, )
 
+var getProductByItemId = function(itemId, merchantId) {
+  return db.merchants[merchantId].items[itemId];
+}
+
 db.createUser = createUser;
 db.createMerchant = createMerchant;
-db.getItemIdByUserPreference = getItemIdByUserPreference;
+db.getIteminfoByUserPreference = getIteminfoByUserPreference;
 db.getUserByName = getUserByName;
-db.getMixinPrefListByUsername = getMixinPrefListByusername;
+db.getMixinPrefListByUsername = getMixinPrefListByUsername;
+db.getUserPrefListByUsername = getUserPrefListByUsername;
+db.createMerchantItem = createMerchantItem;
+db.createUserPreference = createUserPreference;
 
 module.exports = db;
