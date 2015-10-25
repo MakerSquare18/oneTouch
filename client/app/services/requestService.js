@@ -72,12 +72,28 @@ angular.module('myApp.services', [])
       data: data
     }).then(function(res){
       console.log('posted pref');
+      console.log('got user data!');
+      console.log('add preference res: ', res);
+      return res.data;
     },function(error) {
       console.log("problem getting user data: ",error);
       return;
     });
   };
-
+  RequestFactory.signupUser = function(username, password) {
+    return $http({
+      method: 'POST',
+      url: 'api/user/',
+      data: data
+    }).then(function(res) {
+      console.log('created user in requestfactory');
+      console.log('signupUpser res: ', res);
+      return res.data;
+    }, function(error) {
+      console.log('problem signing up user: ', error);
+      return;
+    });
+  };
   //RequestFactory.addUser = function()
   return RequestFactory;
 }]);

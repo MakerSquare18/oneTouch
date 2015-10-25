@@ -1,1 +1,12 @@
-<p>This is the partial for userSignup.</p>
+<div id='signup'>
+  <h1>Signup</h1>
+  <form name="signupForm" ng-submit='signup()'>
+    <input type="text" ng-model='user.username' placeholder="Username" required>
+    <input type="password" ng-model='user.password' placeholder="Password" required>
+    <br>
+    <input type="text" ng-model="user.creditCard" payments-validate="card" placeholder="Credit Card Number" required/>
+    <input type="text" ng-model="user.creditCard" payments-validate="expiry" placeholder="Expiration" required/>
+    <input type="text" ng-model="user.creditCard" payments-validate="cvc" placeholder="CVC" required/>
+    <button class="btn btn-default">Signup</button>
+  </form>
+</div>
