@@ -4,7 +4,7 @@ module.exports = function createMerchant(req, res) {
   var newMerchantInfo = req.body.merchantInfo;
   var newMerchant = {
     info: newMerchantInfo,
-    items: [];
+    items: []
   }
   // db.merchants[newMerchantName] = {
   //   info: newMerchantInfo,
