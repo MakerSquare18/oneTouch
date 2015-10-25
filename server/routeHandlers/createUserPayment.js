@@ -1,5 +1,6 @@
 var db = require('../db');
 var paypal = require('../paypal');
+var qr = require('../qr');
 
 module.exports = function createUserPayment(req, res) {
   var username = req.body.username;
@@ -30,6 +31,7 @@ module.exports = function createUserPayment(req, res) {
     paypal.makePayment(merchantBearerToken, payer, amount)
     .then(function(paymentResponse) {
       console.log(paymentResponse)
+      res.send(qr(itemId));
     });
   });
 };

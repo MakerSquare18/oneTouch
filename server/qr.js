@@ -6,4 +6,4 @@ var createReceiptQR = function(encodeObj) {
   return png_string;
 }
 
-exports.createReceiptQR = createReceiptQR;
+module.exports = createReceiptQR;

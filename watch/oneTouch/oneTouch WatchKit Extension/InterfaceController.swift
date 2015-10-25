@@ -15,6 +15,9 @@ class InterfaceController: WKInterfaceController {
     // Store loaded preferences data here
     var userData: JSON = nil
     
+    // Array of picker items that will be populated when AJAX completes
+    var purchasableItems: [WKPickerItem] = []
+    
     // Hard coded since there is no iOS app to go along with the watch
     let username: String = "makersquare18"
 
@@ -53,43 +56,50 @@ class InterfaceController: WKInterfaceController {
         print(merchantId)
         print(itemId)
         let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
-        Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON)
-            .responseJSON{response in
-                self.receiptImage.setImageNamed("testReceipt.png")
+        displayLoading()
+        Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
+            {
+                (_, _, data, _) in
+                let image = UIImage(data: data! as! NSData)
+                self.receiptImage.setImage(image)
                 self.addTrashButton()
         }
     }
     
     // Gets rid of receipt image
     func trashReceiptTouch() {
+        setPurchasableItems()
         receiptImage.setImage(nil)
         addPurchaseButton()
     }
     
-    func loadReceipt() {
-    
+    func setPurchasableItems() {
+        let preferences = self.userData["preferences"]
+        var counter: Int = 0;
+        for _ in preferences {
+            let item = WKPickerItem()
+            item.title = self.userData["preferences", counter, "itemInfo", "name"].string
+            purchasableItems.append(item)
+            counter++
+        }
+        self.purchasePicker.setItems(purchasableItems)
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
-        
-        Alamofire.request(.GET, "http://screenshots.en.sftcdn.net/en/scrn/76000/76818/microsoft-small-basic-22.jpg").response() {
-            (_, _, data, _) in
-            let image = UIImage(data: data! as! NSData)
-            self.receiptImage.setImage(image)
-        }
-        
-        // Initialize application with purchase button in context menu
-        addPurchaseButton()
-        
+    func displayLoading() {
         // Initialize Loading screen until AJAX completes
         let loadingItem: WKPickerItem = WKPickerItem()
         loadingItem.title = "Loading..."
         let pickerLoading: [WKPickerItem] = [loadingItem]
         purchasePicker.setItems(pickerLoading)
+    }
+    
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
         
-        // Array of picker items that will be populated when AJAX completes
-        var purchasableItems: [WKPickerItem] = []
+        displayLoading();
+        
+        // Initialize application with purchase button in context menu
+        addPurchaseButton()
         
         // AJAX call that loads purchasable items
         let url: String = "http://127.0.0.1:3000/api/user/makersquare18"
@@ -97,15 +107,7 @@ class InterfaceController: WKInterfaceController {
             .responseJSON {response in
                 self.userData = JSON(response.result.value!)
                 print(self.userData)
-                let preferences = self.userData["preferences"]
-                var counter: Int = 0;
-                for _ in preferences {
-                    let item = WKPickerItem()
-                    item.title = self.userData["preferences", counter, "itemInfo", "name"].string
-                    purchasableItems.append(item)
-                    counter++
-                }
-                self.purchasePicker.setItems(purchasableItems)
+                self.setPurchasableItems()
         }
         
         
