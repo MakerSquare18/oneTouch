@@ -36,7 +36,18 @@ createMerchant(req, res)
     description: "Tasty wrap",
     merchantId: "starbucks"
   });
-  
+  db.createMerchantItem({
+    name: "gross booger",
+    price: 9.00,
+    description: "nobody has this as a pref",
+    merchantId: "starbucks"
+  });
+  db.createMerchantItem({
+    name: "desireable shortcake",
+    price: 19.00,
+    description: "I should add this tastiness",
+    merchantId: "starbucks"
+  });
   console.log("Resolved!");
   console.log("Merchant: ", db.merchants);
   var req = {

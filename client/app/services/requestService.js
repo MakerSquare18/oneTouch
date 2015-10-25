@@ -21,13 +21,13 @@ angular.module('myApp.services', [])
   RequestFactory.getUserData = function(username){
     //TODO: don't hardcode username lol get it from auth factory
     var username = "makersquare18";
-    console.log("in getUserData req fac")
+    console.log("in getUserData req fac");
     return $http({
       method: 'GET',
       url: '/api/user/'+ username,
     }).then(function(res){
       console.log('got user data!');
-      console.log('res: ', res);
+      console.log('user data: ', res);
       return res.data;
     },function(error) {
       console.log("problem getting user data: ",error);
@@ -43,9 +43,7 @@ angular.module('myApp.services', [])
       url: '/api/user/'+ username,
       data: data
     }).then(function(res){
-      console.log('got user data!');
-      console.log('res: ', res);
-      return res.data;
+      console.log('posted pref');
     },function(error) {
       console.log("problem getting user data: ",error);
       return;

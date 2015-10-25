@@ -12,8 +12,8 @@ angular.module('myApp.user', ['ngRoute', 'myApp.services'])
 //This controller function is actually added at the bottom. This lets us play a bit
 //This lets us add a resolve method in a somewhat reasonable manner.
 function UserCtrl($scope, UserFactory) {
-  $scope.userData = UserFactory.userData || {};
-  $scope.allPreferences = UserFactory.allPreferences || {};
+  $scope.userData = UserFactory.userData;
+  $scope.allPreferences = UserFactory.allPreferences;
   console.log("userData in ctrl: ", $scope.userData);
   console.log("allPreferences in ctrl: ", $scope.allPreferences);
   //TODO: remove dummy data and refactor view so it works n shit
