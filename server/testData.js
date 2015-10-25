@@ -55,8 +55,6 @@ req = {
 
 createMerchant(req, res);
 
-createMerchant(req, res);
-
 // test itemTable junction table
 db.createMerchantItem({
   name: "burrito",

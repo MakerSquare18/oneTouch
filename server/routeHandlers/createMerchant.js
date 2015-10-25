@@ -12,10 +12,10 @@ module.exports = function createMerchant(req, res) {
     items: []
   };
   db.createMerchant(newMerchant);
-  paypal.authorizeServer(newMerchantClientId, newMerchantSecret)
+  paypal.authenticateServer(newMerchantClientId, newMerchantSecret)
   .then(function(merchantTokens) {
-    db.merchants[merchantName].auth.token = merchantTokens.access_token;
-    db.merchants[merchantName].auth.expiresIn = merchantTokens.expires_in;
+    db.merchants[newMerchantName].auth.token = merchantTokens.access_token;
+    db.merchants[newMerchantName].auth.expiresIn = merchantTokens.expires_in;
     res.send(db.merchants[newMerchantName]);
   });
 };
