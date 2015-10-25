@@ -50,6 +50,7 @@
 /* shadowed */
 .profile-pic {
   padding-left: 2cm;
+  padding-top: 0.5cm;
   -webkit-filter: drop-shadow(12px 12px 15px rgba(0,0,0,0.5));
 }
 
