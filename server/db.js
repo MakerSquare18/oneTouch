@@ -55,27 +55,6 @@ var createUser = function(userObj) {
   db.users[userObj.username] = userObj;
 }
 
-var createMerchant = function(merchantObj) {
-  if (db.merchants[merchantObj.merchantName] !== undefined) {
-    return Error("" + merchantObj.merchantName + "exists!!");
-  }
-  merchantObj.auth ={
-    bearer: null,
-    refresh: null
-  };
-  db.merchants[merchantObj.merchantName] = merchantObj;
-}
-
-// update merchant table global key and item global table merchant localkey
-var createMerchantItem = function(itemObj) {
-  itemObj._g_itemId = db.itemsTable.length;
-  var _merchantItemId = db.merchants[itemObj.merchantId].items.push(itemObj);
-  db.itemsTable.push({
-    merchantItemId: _merchantItemId - 1,
-    merchantId: itemObj.merchantId
-  });
-}
-
 // input username
 var createUserPreference = function(preferenceObj) {
   var _username = preferenceObj.username;
@@ -89,6 +68,28 @@ var createUserPreference = function(preferenceObj) {
     return Error("" + _username + " does not exist!!");
   }
 };
+
+var createMerchant = function(merchantObj) {
+  if (db.merchants[merchantObj.merchantName] !== undefined) {
+    return Error("" + merchantObj.merchantName + "exists!!");
+  }
+  merchantObj.auth ={
+    bearer: null,
+    refresh: null
+  };
+  merchantObj.items = merchantObj.items || [];
+  db.merchants[merchantObj.merchantName] = merchantObj;
+}
+
+// update merchant table global key and item global table merchant localkey
+var createMerchantItem = function(itemObj) {
+  itemObj._g_itemId = db.itemsTable.length;
+  var _merchantItemId = db.merchants[itemObj.merchantId].items.push(itemObj);
+  db.itemsTable.push({
+    merchantItemId: _merchantItemId - 1,
+    merchantId: itemObj.merchantId
+  });
+}
 
 // return user obj
 var getUserByName = function(username) {
@@ -170,11 +171,11 @@ var getProductByItemId = function(itemId, merchantId) {
 
 db.createUser = createUser;
 db.createMerchant = createMerchant;
-db.getIteminfoByUserPreference = getIteminfoByUserPreference;
-db.getUserByName = getUserByName;
-db.getMixinPrefListByUsername = getMixinPrefListByUsername;
-db.getUserPrefListByUsername = getUserPrefListByUsername;
 db.createMerchantItem = createMerchantItem;
 db.createUserPreference = createUserPreference;
+db.getIteminfoByUserPreference = getIteminfoByUserPreference;
+db.getUserByName = getUserByName;
+// db.getMixinPrefListByUsername = getMixinPrefListByUsername;
+db.getUserPrefListByUsername = getUserPrefListByUsername;
 
 module.exports = db;
