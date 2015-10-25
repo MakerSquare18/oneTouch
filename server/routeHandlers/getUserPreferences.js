@@ -25,7 +25,7 @@ module.exports = function createMerchant(req, res) {
       });
     } else {
       var userInfoDump = db.getUserPrefListByUsername(req.params.username);
-      res.send(userInfoDump);  
+      res.send(userInfoDump);
     }
   } else {
     var userInfoDump = db.getUserPrefListByUsername(req.params.username);
