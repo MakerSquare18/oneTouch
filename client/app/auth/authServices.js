@@ -9,7 +9,7 @@ angular.module('myApp.auth')
         console.log('signupUser')
       });
   };
-  AuthFactory.signupMerchant = function(username, password) {
+  AuthFactory.signupMerchant = function(merchantData) {
     var context = this;
     return RequestFactory.signupMerchant(merchantData) 
     .then(function(data) {

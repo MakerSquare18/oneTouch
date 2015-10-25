@@ -96,6 +96,18 @@ angular.module('myApp.services', [])
       return;
     });
   };
-  //RequestFactory.addUser = function()
+  RequestFactory.signupMerchant = function(merchantData) {
+    return $http({
+      method: 'POST',
+      url: 'api/merchant/',
+      data: merchantData
+    }).then(function(res) {
+      console.log('created merchant in requestfactory');
+      console.log('signupMerchant res: ', res);
+      return res.data;
+    }, function(error) {
+      console.log('problem signing up merchant');
+    });
+  }
   return RequestFactory;
 }]);
