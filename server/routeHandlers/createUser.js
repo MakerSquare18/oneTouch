@@ -28,8 +28,8 @@ module.exports = function createUser(req, res) {
           res.send("User created successfully");
           resolve();
         }
-      });  
-    }); 
+      });
+    });
   });
 };
 
