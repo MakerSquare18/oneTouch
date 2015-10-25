@@ -21,7 +21,6 @@ angular.module('myApp.merchant', ['ngRoute'])
   $scope.createMerchantItem = function() {
     // Construct Payload
     $scope.itemData.merchantId = "starbucks";
-    console.log($scope.itemData);
     MerchantFactory.createMerchantItem($scope.itemData);
   };
   $scope.merchantData = {};
