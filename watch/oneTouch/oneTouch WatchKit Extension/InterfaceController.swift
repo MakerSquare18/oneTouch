@@ -88,12 +88,13 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         let merchantId: String = userData["preferences", currentItem, "merchantId"].string!
         print(userData["preferences", currentItem, "itemId"])
         let itemId: String = String(userData["preferences", currentItem, "_g_itemId"].int!)
+        let itemIdInt: Int = currentItem
+        print("itemIdInt is ", itemIdInt)
         print(merchantId)
         print(itemId)
         if let itemType: String = userData["preferences", currentItem, "type"].string {
             let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId, "itemType": itemType]
             print(parameters)
-            displayLoading()
             Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
                 {
                     (_, _, data, _) in
@@ -102,11 +103,12 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     self.purchasePicker.setHidden(true)
                     self.receiptImage.setImage(image)
                     self.addTrashButton()
-                    self.textDisplay.setText(self.userData["preferences", self.currentItem, "name"].string!)
+                    print("itemIdInt is ", itemIdInt)
+                    self.textDisplay.setText(self.userData["preferences", itemIdInt, "name"].string!)
             }
+            displayLoading()
         } else {
             let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
-            displayLoading()
             Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
                 {
                     (_, _, data, _) in
@@ -115,8 +117,10 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     self.purchasePicker.setHidden(true)
                     self.receiptImage.setImage(image)
                     self.addTrashButton()
-                    self.textDisplay.setText(self.userData["preferences", self.currentItem, "name"].string!)
+                    print("itemIdInt is ", itemIdInt)
+                    self.textDisplay.setText(self.userData["preferences", itemIdInt, "name"].string!)
             }
+            displayLoading()
         }
 
     }
