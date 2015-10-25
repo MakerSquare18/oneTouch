@@ -42,6 +42,7 @@ var createUser = function(userObj) {
   if (db.users[userObj.username] !== undefined) {
     return Error("" + userObj.username + "exists!!");
   }
+  userObj.preferences = [];
   db.users[userObj.username] = userObj;
 }
 
@@ -49,6 +50,10 @@ var createMerchant = function(merchantObj) {
   if (db.merchants[merchantObj.merchantName] !== undefined) {
     return Error("" + merchantObj.merchantName + "exists!!");
   }
+  merchantObj.auth ={
+    bearer: null,
+    refresh: null
+  };
   db.merchants[merchantObj.merchantName] = merchantObj;
 }
 
@@ -76,17 +81,20 @@ var getMixinPrefListByusername = function(username) {
     _merchantId = preference.merchantId;
     _itemId = preference.itemId;
     preferenceMixin.push({
-      merchantId: _merchantId,
-      itemList: db.merchant[_merchantId].items[itemId]
+      // db.merchants[_merchantId].
+      itemInfo: db.merchants[_merchantId].items[_itemId],
+      itemId: _itemId,
+      merchantId: db.merchants[_merchantId].merchantName
     });
   });
 
   userInfoMixin["username"] = username;
   userInfoMixin["profileImg"] = db.users[username].profileImg;
-  return preferenceMixin;
+  userInfoMixin.preferences = preferenceMixin;
+  return userInfoMixin;
 }
 
-
+// var createUserPreference = function(itemId, )
 
 db.createUser = createUser;
 db.createMerchant = createMerchant;

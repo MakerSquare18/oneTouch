@@ -10,16 +10,15 @@ module.exports = function createUser(req, res) {
   var newUser = {
     info: newUserInfo,
     creditCard: null,
-    preferences: [],
     profileImg: newUserProfileImg
   };
 
-  // db.createUser(newUser);
 
   paypal.storeCreditCard(db.paypalServerAuth.token, newUsername, newUserCreditCard)
   .then(function(creditCardVault) {
     newUser.creditCard = creditCardVault.id;
-    db.users[newUsername] = newUser;
+    // db.users[newUsername] = newUser;
+    db.createUser(newUser);
     res.send("User created successfully");
   });
 };

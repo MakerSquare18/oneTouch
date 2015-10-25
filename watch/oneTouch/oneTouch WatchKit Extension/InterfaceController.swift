@@ -81,7 +81,7 @@ class InterfaceController: WKInterfaceController{
                 // TODO: Make this programmatic
                 for i in 0...3 {
                     let item = WKPickerItem()
-                    item.title = data["preferences", i, "preferenceName"].string
+                    item.title = data["preferences", i, "itemInfo", "name"].string
                     purchasableItems.append(item)
                 }
                 self.purchasePicker.setItems(purchasableItems)
