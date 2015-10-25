@@ -30,14 +30,6 @@ function UserCtrl($scope, UserFactory) {
     console.log(item);
   };
 }
-// UserCtrl.resolve = {
-//   getUserData: function(UserFactory) {
-//     return UserFactory.getUserData();
-//   },
-//   getAllPossiblePreferences: function(UserFactory) {
-//     return UserFactory.getAllPossiblePreferences();
-//   }
-// };
 UserCtrl.resolve = {
   resolver: function(UserFactory){
     return UserFactory.resolver();
