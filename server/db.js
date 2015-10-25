@@ -141,27 +141,6 @@ var getUserPrefListByUsername = function(username) {
   return userInfoMixin;
 }
 
-var getMixinPrefListByUsername = function(username) {
-  var userInfoMixin = {};
-  var preferenceMixin = [];
-  var _merchantId, _itemId;
-  db.users[username].preferences.forEach(function(preference) {
-    _merchantId = preference.merchantId;
-    _itemId = preference.itemId;
-    preferenceMixin.push({
-      // db.merchants[_merchantId].
-      itemInfo: db.merchants[_merchantId].items[_itemId],
-      itemId: _itemId,
-      merchantId: db.merchants[_merchantId].merchantName
-    });
-  });
-
-  userInfoMixin["username"] = username;
-  userInfoMixin["profileImg"] = db.users[username].profileImg;
-  userInfoMixin.preferences = preferenceMixin;
-  return userInfoMixin;
-}
-
 var getAllItems = function() {
   var allItems = [];
   var _merchantId, _itemId;
@@ -183,7 +162,6 @@ db.createMerchantItem = createMerchantItem;
 db.createUserPreference = createUserPreference;
 db.getIteminfoByUserPreference = getIteminfoByUserPreference;
 db.getUserByName = getUserByName;
-// db.getMixinPrefListByUsername = getMixinPrefListByUsername;
 db.getUserPrefListByUsername = getUserPrefListByUsername;
 db.getAllItems = getAllItems;
 db.getMerchantItem = getMerchantItem;
