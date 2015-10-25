@@ -32,6 +32,14 @@ createMerchant(req, res)
   });
   console.log(3);
 
+  db.createLocationItem({
+    name: "Great Schwag",
+    merchantId: "starbucks",
+    price: 0,
+    latitude: 36.121174,
+    longitude: -115.1718413
+  });
+
   db.createMerchantItem({
     name: "wrap",
     price: 7.00,

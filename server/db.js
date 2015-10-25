@@ -43,7 +43,18 @@ var db = {
   },
   users: {},
   merchants: {},
-  itemsTable: []
+  itemsTable: [],
+  locationItems: []
+};
+
+var createLocationItem = function(locationItem) {
+  locationItems.push({
+    name: locationItem.name,
+    merchantId: locationItem.merchantId,
+    latitude: locationItem.latitude,
+    longitude: locationItem.longitude,
+    price: locationItem.price
+  });
 };
 
 // var createUser = function(userInfo, callback) { shall we make it async?
