@@ -1,1 +1,12 @@
-<p>This is the partial for merchantSignup.</p>
+<div id='signup'>
+  <h1>Signup</h1>
+  <form name="signupForm" ng-submit='signupMerchant()'>
+    <input name="merchantname" type="text" ng-model='merchant.merchantname' placeholder="Company Name" required>
+    <input name="password" type="password" ng-model='merchant.password' placeholder="Password" required>
+    <br>
+    <button class="btn btn-default">Signup</button>
+  </form>
+  <div ng-show='signupForm.username.$error.required || signupForm.password.$error.required'>
+    <h3 class='signup-error'>Username and Password Required</h3>
+  </div>
+</div>

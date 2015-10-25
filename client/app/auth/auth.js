@@ -26,7 +26,7 @@ angular.module('myApp.auth', ['ngRoute'])
     $scope.user = {};
     $scope.signupUser = function() {
         AuthFactory.signupUser($scope.user)
-          .then(function (token) {
+          .then(function () {
             $location.path('/');
           })
           .catch(function (error) {
@@ -35,6 +35,15 @@ angular.module('myApp.auth', ['ngRoute'])
     };
 }])
 
-.controller('MerchantSignupCtrl', [function() {
-
+.controller('MerchantSignupCtrl', ['$scope', '$location', 'AuthFactory', function($scope, $location, AuthFactory) {
+    $scope.merchant = {};
+    $scope.signupMerchant = function() {
+        AuthFactory.signupMerchant($scope.merchant)
+            .then(function() {
+                $location.path('/merchant');
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    };
 }]);

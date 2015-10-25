@@ -2,12 +2,19 @@
 angular.module('myApp.auth')
 .factory('AuthFactory', ['RequestFactory', function(RequestFactory) {
   var AuthFactory = {};
-  AuthFactory.signupUser = function(username, password) {
+  AuthFactory.signupUser = function(userdata) {
     var context = this;
-    return RequestFactory.signupUser(username, password)
+    return RequestFactory.signupUser(userdata)
       .then(function(data) {
         console.log('signupUser')
       });
+  };
+  AuthFactory.signupMerchant = function(username, password) {
+    var context = this;
+    return RequestFactory.signupMerchant(merchantData) 
+    .then(function(data) {
+      console.log('signupMerchant');
+    });
   };
  return AuthFactory;
 }]);
