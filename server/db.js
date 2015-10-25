@@ -163,12 +163,6 @@ var getMixinPrefListByUsername = function(username) {
   return userInfoMixin;
 }
 
-// var createUserPreference = function(itemId, )
-
-var getProductByItemId = function(itemId, merchantId) {
-  return db.merchants[merchantId].items[itemId];
-}
-
 var getAllItems = function() {
   var allItems = [];
   var _merchantId, _itemId;
@@ -178,6 +172,10 @@ var getAllItems = function() {
     allItems.push(db.merchants[_merchantId].items[_itemId])
   });
   return allItems;
+}
+
+var getMerchantItem = function(merchantId) {
+  return db.merchants[merchantId].items;
 }
 
 
@@ -190,5 +188,6 @@ db.getUserByName = getUserByName;
 // db.getMixinPrefListByUsername = getMixinPrefListByUsername;
 db.getUserPrefListByUsername = getUserPrefListByUsername;
 db.getAllItems = getAllItems;
+db.getMerchantItem = getMerchantItem;
 
 module.exports = db;

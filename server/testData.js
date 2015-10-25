@@ -71,6 +71,7 @@ createMerchant(req, res)
       itemId: 1 // g_itemId;
     });
   });
+
 });
 
 // console.log(db.itemsTable);
