@@ -3,7 +3,7 @@
 angular.module('myApp.user')
 .factory("UserFactory", ["RequestFactory", "$q", function(RequestFactory, $q) {
   var UserFactory = {};
-  //This endpoint should give me an array of ALL possible preferences
+  //This method should give me an array of ALL possible preferences
   UserFactory.getUserData = function(){
     //set context for ".then"
     var context = this;
@@ -12,7 +12,7 @@ angular.module('myApp.user')
       .then(function(data){
         context.userData = data});
   };
-  //this endpoint should give me an object with username, user prof, and an array
+  //this method should give me an object with username, user prof, and an array
   //of all the users selected preferences.
   UserFactory.getAllPossiblePreferences = function(){
     var context = this;
@@ -46,14 +46,19 @@ angular.module('myApp.user')
         }
       }
     });
-
   }
   //addPreference does 3 things simultaneously: 
   //1) posts a new user pref (async) 
   //2) removes a pref from the possible preferences to add
   //3) adds the user pref to the users' view
-  // UserFactory.addPreference = function(prefIndex){
-  //   var addedPref
-  // }
+  UserFactory.addPreference = function(prefIndex){
+    var context = this;
+    var addedPref = context.allPreferences.splice(prefIndex, 1)[0];
+    RequestFactory.addPreference(
+      {prefId: addedPref.itemId, 
+      username: context.userData.username});
+    context.userPrefs.push(addedPref);
+
+  }
   return UserFactory;
 }]);
