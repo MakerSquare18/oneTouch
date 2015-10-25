@@ -17,7 +17,7 @@
 }
 
 .row {
-  padding: 80px;
+  padding: 60px;
 }
 
 /* angular bootstrap remedy - avoids adding empty href attributes to link tags which cause unwanted route changes */

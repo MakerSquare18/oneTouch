@@ -1,5 +1,35 @@
-<p>This is the partial for merchant.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div class="container">
+  <div class="header">
+    Welcome, {{merchantData.merchantname}}
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <img ng-src={{merchantData.profileImg}} class="img-responsive">
+    </div>
+    <div class="col-xs-8">
+      <h4>Create A New Item To Offer</h4>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input ng-model="nameText" type="text" class="form-control" placeholder="Name">
+          <input ng-model="priceText" type="text" class="form-control" placeholder="Price">
+          <input ng-model="descriptionText" type="text" class="form-control" placeholder="Description">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Your Offered Items</h4>
+      <div class="table-wrapper">
+        <table class="table table-hover">
+          <tr ng-repeat="item in merchantData.merchantItems">
+            <td>{{item.itemid}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
