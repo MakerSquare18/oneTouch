@@ -65,6 +65,7 @@ angular.module('myApp.services', [])
   //POST a new preference to the user's watch display
   //TODO: confer w/ Ian about format of data
   RequestFactory.addPreference = function(data){
+    var username = "makersquare18";
     console.log('in addPreference req fac');
     return $http({
       method: 'POST',

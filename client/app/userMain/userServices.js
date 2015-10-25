@@ -57,7 +57,7 @@ angular.module('myApp.user')
     RequestFactory.addPreference(
       {prefId: addedPref.itemId, 
       username: context.userData.username});
-    context.userPrefs.push(addedPref);
+    context.userData.preferences.push(addedPref);
 
   }
   return UserFactory;
