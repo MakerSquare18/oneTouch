@@ -18,8 +18,11 @@ angular.module('myApp.merchant', ['ngRoute'])
   // Pull data from DB
   $scope.merch[0] = {name: "Venti Mocha Latte", itemid: 1, price: 4.99, description: "Large delicious latte from Starbucks"};
   $scope.merch[1] = {name: "Large Cheese Pizza", itemid: 2, price: 9.99, description: "Delicious cheese pizza from Dominos"};
-  $scope.createMercantItem = function(itemData) {
-    MerchantFactory.createMercantItem(itemData);
+  $scope.createMerchantItem = function() {
+    // Construct Payload
+    $scope.itemData.merchantId = "starbucks";
+    console.log($scope.itemData);
+    MerchantFactory.createMerchantItem($scope.itemData);
   };
   $scope.merchantData = {};
   $scope.init = function() {

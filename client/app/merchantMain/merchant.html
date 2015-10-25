@@ -14,7 +14,7 @@
           <input ng-model="itemData.price" type="text" class="form-control" placeholder="Price" required>
           <input ng-model="itemData.description" type="text" class="form-control" placeholder="Description" required>
         </div>
-        <button>Create Item</button>
+        <button ng-click="createMercantItem($itemData)">Create Item</button>
       </form>
     </div>
   </div>

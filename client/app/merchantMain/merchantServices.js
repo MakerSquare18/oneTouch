@@ -4,7 +4,7 @@ angular.module('myApp.merchant')
   var MerchantFactory = {};
   MerchantFactory.createMerchantItem = function(itemData) {
     var context = this;
-    return RequestFactory.createMerchantItem(itemData)
+      return RequestFactory.createMerchantItem(itemData)
       .then(function(data) {
         console.log('posted data');
       });

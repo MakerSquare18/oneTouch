@@ -38,7 +38,8 @@ angular.module('myApp.services', [])
   RequestFactory.createMerchantItem = function(itemData) {
     return $http({
       method: 'POST',
-      url: '/api/merchant/item'
+      url: '/api/merchant/item',
+      data: itemData
     }).then(function(res) {
       console.log('created merchant item!');
       return res.data;
