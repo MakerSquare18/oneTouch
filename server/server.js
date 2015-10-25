@@ -9,6 +9,8 @@ var app = express();
 
 app.use(bodyParser.json());
 
+app.use(express.static("../client/app"));
+
 // Paypal Auth Routes
 app.get('/api/login/paypal/:merchantId', paypal.obtainConsent);
 app.get('/api/auth/paypal', paypal.captureAuthorizationCode, routeHandlers.paypalAuth);

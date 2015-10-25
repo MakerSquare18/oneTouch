@@ -8,7 +8,8 @@ angular.module('myApp.user')
     //set context for ".then"
     var context = this;
     return RequestFactory.getUserData()
-      .then(context.userData = res.data);
+      .then(function(data){
+        context.userData = data});
   };
   //this endpoint should give me an object with username, user prof, and an array
   //of all the users selected preferences.
@@ -16,7 +17,8 @@ angular.module('myApp.user')
     var context = this;
     //sets factory preferences to the data from the all preferences endpoint
     return RequestFactory.getAllPossiblePreferences()
-      .then(context.allPreferences = res.data);
+      .then(function(data){
+        context.allPreferences = data});
   };
   return UserFactory;
 }]);
