@@ -18,9 +18,10 @@ angular.module('myApp.services', [])
   //this endpoint should give me an object with username, user prof, and an array
   //of all the users selected preferences.
   RequestFactory.getUserData = function(username){
+    var username = "david";
     return $http({
       method: 'GET',
-      url: '/api/user/'+ username +'/items',
+      url: '/api/user/'+ username,
     }).then(function(res){
       console.log('got user data!');
       return res.data;
@@ -29,6 +30,5 @@ angular.module('myApp.services', [])
       return;
     });
   };
-
   return RequestFactory;
 }]);

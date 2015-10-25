@@ -1,35 +1,22 @@
 //this will use the request service
 'use strict';
 angular.module('myApp.user')
-.factory("UserFactory", ['$http',function($http) {
-  var RequestFactory = {};
+.factory("UserFactory", ["RequestFactory", function(RequestFactory) {
+  var UserFactory = {};
   //This endpoint should give me an array of ALL possible preferences
-  RequestFactory.getAllPossiblePreferences = function(){
-    return $http({
-      method: 'GET',
-      url: '/api/items',
-    }).then(function(res){
-      console.log('got allPreferences data!');
-      return res.data;
-    },function(error) {
-      console.log("problem getting allPref data: ",error);
-      return;
-    });
+  UserFactory.getUserData = function(){
+    //set context for ".then"
+    var context = this;
+    return RequestFactory.getUserData()
+      .then(context.userData = res.data);
   };
   //this endpoint should give me an object with username, user prof, and an array
   //of all the users selected preferences.
-  RequestFactory.getUserData = function(username){
-    return $http({
-      method: 'GET',
-      url: '/api/user/'+ username +'/items',
-    }).then(function(res){
-      console.log('got user data!');
-      return res.data;
-    },function(error) {
-      console.log("problem getting user data: ",error);
-      return;
-    });
+  UserFactory.getAllPossiblePreferences = function(username){
+    var context = this;
+    //sets factory preferences to the data from the all preferences endpoint
+    return RequestFactory.getAllPossiblePreferences()
+      .then(context.allPreferences = res.data);
   };
-
-  return RequestFactory;
+  return UserFactory;
 }]);
