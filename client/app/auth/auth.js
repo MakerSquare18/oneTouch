@@ -24,10 +24,9 @@ angular.module('myApp.auth', ['ngRoute'])
 
 .controller('UserSignupCtrl', ['$scope', '$location', 'AuthFactory', function($scope, $location, AuthFactory) {
     $scope.user = {};
-    $scope.signupUser = function () {
+    $scope.signupUser = function() {
         AuthFactory.signupUser($scope.user)
           .then(function (token) {
-            // $window.localStorage.setItem('com.shortly', token);
             $location.path('/');
           })
           .catch(function (error) {
