@@ -89,6 +89,7 @@ var createMerchantItem = function(itemObj) {
     merchantItemId: _merchantItemId - 1,
     merchantId: itemObj.merchantId
   });
+  return _g_itemId;
 }
 
 // return user obj
