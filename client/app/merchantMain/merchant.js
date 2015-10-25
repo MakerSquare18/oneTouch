@@ -13,6 +13,9 @@ angular.module('myApp.merchant', ['ngRoute'])
   $scope.merchName = 'Starbucks Team';
   $scope.itemData = {};
   $scope.merch = [];
+
+  // $scope.getMerchantData();
+  // Pull data from DB
   $scope.merch[0] = {name: "Venti Mocha Latte", itemid: 1, price: 4.99, description: "Large delicious latte from Starbucks"};
   $scope.merch[1] = {name: "Large Cheese Pizza", itemid: 2, price: 9.99, description: "Delicious cheese pizza from Dominos"};
   $scope.createMercantItem = function(itemData) {

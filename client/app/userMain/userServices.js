@@ -24,7 +24,7 @@ angular.module('myApp.user')
         context.allPreferencesUnfiltered = data});
   };
 
-  //Ok due to Brendan's questionable design choices, this function is needed to 
+  //Ok due to Brendan's questionable design choices, this function is needed to
   //properly filter duplicates out of the allPossiblePreferences
   UserFactory.resolver = function(){
     var context = this;
@@ -47,8 +47,8 @@ angular.module('myApp.user')
       }
     });
   }
-  //addPreference does 3 things simultaneously: 
-  //1) posts a new user pref (async) 
+  //addPreference does 3 things simultaneously:
+  //1) posts a new user pref (async)
   //2) removes a pref from the possible preferences to add
   //3) adds the user pref to the users' view
   UserFactory.addPreference = function(prefIndex){
