@@ -10,17 +10,8 @@ import WatchKit
 import Foundation
 import Alamofire
 import SwiftyJSON
-import Foundation
-
 
 class InterfaceController: WKInterfaceController {
-    
-    var url: NSURL = NSURL(string: "http://apod.nasa.gov/apod/image/1504/Mooooonwalk_rjn_960.jpg")!
-    var data = NSData(contentsOfURL: url)
-            imageURL.image = UIImage(data: data)
-        }
-    }
-    
     // Store loaded preferences data here
     var userData: JSON = nil
     
@@ -75,9 +66,18 @@ class InterfaceController: WKInterfaceController {
         addPurchaseButton()
     }
     
+    func loadReceipt() {
+    
+    }
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
+        
+        Alamofire.request(.GET, "http://screenshots.en.sftcdn.net/en/scrn/76000/76818/microsoft-small-basic-22.jpg").response() {
+            (_, _, data, _) in
+            let image = UIImage(data: data! as! NSData)
+            self.receiptImage.setImage(image)
+        }
         
         // Initialize application with purchase button in context menu
         addPurchaseButton()
