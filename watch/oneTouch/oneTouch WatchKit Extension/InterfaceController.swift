@@ -69,7 +69,7 @@ class InterfaceController: WKInterfaceController {
         addMenuItemWithItemIcon(.Trash, title: "Trash Receipt", action: "trashReceiptTouch")
     }
     
-    // Sends a psot request to server to purchase item
+    // Sends a post request to server to purchase item
     func purchaseButtonTouch() {
         let url: String = "http://127.0.0.1:3000/api/payment"
         let merchantId: String = userData["preferences", currentItem, "merchantId"].string!
@@ -101,13 +101,14 @@ class InterfaceController: WKInterfaceController {
 //        hideLoadingBar()
         let preferences = self.userData["preferences"]
         var counter: Int = 0;
+        var localPurchasableItems: [WKPickerItem] = []
         for _ in preferences {
             let item = WKPickerItem()
             item.title = self.userData["preferences", counter, "name"].string
-            purchasableItems.append(item)
+            localPurchasableItems.append(item)
             counter++
         }
-        self.purchasePicker.setItems(purchasableItems)
+        self.purchasePicker.setItems(localPurchasableItems)
     }
     
     func displayLoading() {

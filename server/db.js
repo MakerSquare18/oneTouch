@@ -48,7 +48,7 @@ var db = {
 };
 
 var createLocationItem = function(locationItem) {
-  locationItems.push({
+  db.locationItems.push({
     name: locationItem.name,
     merchantId: locationItem.merchantId,
     latitude: locationItem.latitude,
@@ -197,5 +197,6 @@ db.getUserByName = getUserByName;
 db.getUserPrefListByUsername = getUserPrefListByUsername;
 db.getAllItems = getAllItems;
 db.getMerchantItem = getMerchantItem;
+db.createLocationItem = createLocationItem;
 
 module.exports = db;
