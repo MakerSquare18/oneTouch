@@ -20,7 +20,8 @@ module.exports = function createUserPayment(req, res) {
 
   // Moved this here so people wouldnt have to wait for laoding during demo
   res.send(qr(itemId));
-  console.log('Emailing: ', db.merchants[merchantId].info.email);
+  console.log('Emailing: ', db.merchants[db.locationItems[itemId].merchantId].info.email);
+  console.log(db);
   mail.sendEmail({
     recipient: req.body.itemType ? db.merchants[db.locationItems[itemId].merchantId].info.email : db.merchants[merchantId].info.email,
     subject: "New Transaction!",
