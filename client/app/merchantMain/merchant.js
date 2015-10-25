@@ -5,31 +5,30 @@ angular.module('myApp.merchant', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/merchant', {
     templateUrl: 'merchantMain/merchant.html',
-    controller: 'MerchantCtrl'
+    controller: 'MerchantCtrl',
+    resolve: MerchantCtrl.resolve
   });
-}])
-.controller('MerchantCtrl', ['$scope', 'MerchantFactory', function($scope, MerchantFactory) {
-  $scope.merchImage = 'http://thetshirtgame.com/neon_yolo_you_only_live_once_azalea_pink_bkgd.gif';
-  $scope.merchName = 'Starbucks Team';
-  $scope.itemData = {};
-  $scope.merch = [];
+}]);
 
-  // $scope.getMerchantData();
+function MerchantCtrl($scope, MerchantFactory) {
+  $scope.merch = MerchantFactory.allItemData;
+  $scope.merchantName = MerchantFactory.merchantName;
+  //for now, we don't have distinct icons for each product, just
+  //one for the merchant. There would have to be a change on the backend to fix
+  $scope.merchImage = $scope.merch[0].imageUrl;
+  $scope.itemData = {imageUrl: $scope.merchImage};
+  console.log("merch data in $scope: ", $scope.merch);
   // Pull data from DB
-  $scope.merch[0] = {name: "Venti Mocha Latte", itemid: 1, price: 4.99, description: "Large delicious latte from Starbucks"};
-  $scope.merch[1] = {name: "Large Cheese Pizza", itemid: 2, price: 9.99, description: "Delicious cheese pizza from Dominos"};
   $scope.createMerchantItem = function() {
     // Construct Payload
     $scope.itemData.merchantId = "starbucks";
     MerchantFactory.createMerchantItem($scope.itemData);
   };
-  $scope.merchantData = {};
-  $scope.init = function() {
-     var merchant = 'starbucks';
-     MerchantFactory.getMerchantData(merchant)
-      .then(function() {
-        $scope.merchantData = MerchantFactory.allItemData;
-      });
-  };
-  $scope.init();
-}]);
+}
+
+MerchantCtrl.resolve = {
+  loadData: function(MerchantFactory){
+    return MerchantFactory.getMerchantData('starbucks');
+  }
+};
+angular.module('myApp.merchant').controller('MerchantCtrl', ['$scope', 'MerchantFactory', MerchantCtrl]);

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header welcome">
-    Welcome, {{merchName}}
+    Welcome, {{merchantName}}
   </div>
   <div class="row">
     <div class="col-xs-4">
@@ -24,6 +24,9 @@
       <div class="table-wrapper">
         <table class="table table-hover">
           <tr ng-repeat="item in merch">
+            <td>
+              <img ng-src={{item.imageUrl}} id="small-icon">
+            </td>
             <td>{{item.itemid}}</td>
             <td>{{item.name}}</td>
             <td>{{item.price | currency}}</td>
