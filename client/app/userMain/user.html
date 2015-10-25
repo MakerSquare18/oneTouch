@@ -16,7 +16,7 @@
             </td>
             <td>{{item.merchantId}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.price | currency}}</td>
             <td>{{item.description}}</td>
             <td>
               <button ng-click="removeItem(item)" class="btn btn-default">Remove Item</button>
@@ -45,7 +45,7 @@
 
             <td>{{item.merchantId}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.price | currency}}</td>
             <td>{{item.description}}</td>
             <td>
               <button ng-click="addItem($index)" class="btn btn-default">Add Item</button>

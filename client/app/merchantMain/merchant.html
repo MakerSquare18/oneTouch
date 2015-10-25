@@ -26,7 +26,7 @@
           <tr ng-repeat="item in merch">
             <td>{{item.itemid}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.price | currency}}</td>
             <td>{{item.description}}</td>
           </tr>
         </table>
