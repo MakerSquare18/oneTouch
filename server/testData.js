@@ -26,7 +26,9 @@ createMerchant(req, res)
     name: "burrito",
     price: 7.00,
     description: "Tasty burrito",
-    merchantId: "starbucks"
+    merchantId: "starbucks",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/200px-Starbucks_Corporation_Logo_2011.svg.png" // g_itemId;
+
   });
   console.log(3);
 
@@ -34,19 +36,24 @@ createMerchant(req, res)
     name: "wrap",
     price: 7.00,
     description: "Tasty wrap",
-    merchantId: "starbucks"
+    merchantId: "starbucks",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/200px-Starbucks_Corporation_Logo_2011.svg.png" // g_itemId;
+
   });
   db.createMerchantItem({
     name: "gross booger",
     price: 9.00,
     description: "nobody has this as a pref",
-    merchantId: "starbucks"
+    merchantId: "starbucks",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/200px-Starbucks_Corporation_Logo_2011.svg.png" // g_itemId;
+
   });
   db.createMerchantItem({
     name: "desireable shortcake",
     price: 19.00,
     description: "I should add this tastiness",
-    merchantId: "starbucks"
+    merchantId: "starbucks",
+    imageUrl: "http://www.blogcdn.com/www.dailyfinance.com/media/2013/01/dominoes-pizza-1040-cs010213.jpg"
   });
   console.log("Resolved!");
   console.log("Merchant: ", db.merchants);
@@ -75,7 +82,7 @@ createMerchant(req, res)
     db.createUserPreference({
       username: "makersquare18",
       merchantId: "starbucks",
-      itemId: 0 // g_itemId;
+      itemId: 0
 
     });
 

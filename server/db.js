@@ -124,17 +124,14 @@ var getUserPrefListByUsername = function(username) {
   var _merchantId, _itemId, _itemInfo;
 
   db.users[username].preferences.forEach(function(preference) {
+    console.log("preference view: ", preference);
     _merchantId = preference.merchantId;
     _g_itemId = preference.itemId;
 
     _itemInfo = getMerchantItemInfoFromTableId(_g_itemId);
+    console.log("item info: ", _itemInfo);
     // query junction table with g_itemOd to find merchant private itemId
-    preferenceMixin.push({
-      // db.merchants[_merchantId].
-      itemInfo: _itemInfo,
-      itemId: _g_itemId,
-      merchantId: _merchantId
-    });
+    preferenceMixin.push(_itemInfo);
   });
 
   userInfoMixin["username"] = username;
