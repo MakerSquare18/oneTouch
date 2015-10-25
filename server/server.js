@@ -27,6 +27,8 @@ app.get('/api/items', routeHandlers.getAllItems);
 // app.get('/api/user/:username/items', routeHandlers.getUserPreferences);
 app.get('/api/user/:username', routeHandlers.getUserPreferences);
 
+
+
 app.listen(config.port, function() {
   paypal.authenticateServer(paypalConfig.CLIENT_ID, paypalConfig.SECRET)
   .then(function(auth) {

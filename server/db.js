@@ -31,7 +31,7 @@
 
   // id autoIncremental
   // itemTable : [{
-  //   g_itemId: currIdx,      // itemTableArrayIndex
+  //   merchantId: "starbucks",      // itemTableArrayIndex
   //   merchantItemId: connectionKey
   // }]
   //
@@ -169,6 +169,18 @@ var getProductByItemId = function(itemId, merchantId) {
   return db.merchants[merchantId].items[itemId];
 }
 
+var getAllItems = function() {
+  var allItems = [];
+  var _merchantId, _itemId;
+  db.itemsTable.forEach(function(itemInTable) {
+    _merchantId = itemInTable.merchantId;
+    _itemId = itemInTable.merchantItemId;
+    allItems.push(db.merchants[_merchantId].items[_itemId])
+  });
+  return allItems;
+}
+
+
 db.createUser = createUser;
 db.createMerchant = createMerchant;
 db.createMerchantItem = createMerchantItem;
@@ -177,5 +189,6 @@ db.getIteminfoByUserPreference = getIteminfoByUserPreference;
 db.getUserByName = getUserByName;
 // db.getMixinPrefListByUsername = getMixinPrefListByUsername;
 db.getUserPrefListByUsername = getUserPrefListByUsername;
+db.getAllItems = getAllItems;
 
 module.exports = db;

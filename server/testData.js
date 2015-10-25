@@ -73,7 +73,6 @@ createMerchant(req, res)
   });
 });
 
-
 // console.log(db.itemsTable);
 // console.log(db.merchants["starbucks"].items);
 // console.log(db.users);
