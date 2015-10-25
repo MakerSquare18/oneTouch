@@ -8,7 +8,7 @@ var res = {
   }
 }
 
-req = {
+var req = {
   body: {
     merchantName: "starbucks",
     merchantClientId:"AQ_ofXvBpXHWViTvE626L02CCcrwRQstLJ58NMcwyCFAkp7GyhgPL9pnxUyI-quRCdm96is4F0jNTNqr",
@@ -28,6 +28,7 @@ createMerchant(req, res)
     description: "Tasty burrito",
     merchantId: "starbucks"
   });
+  console.log(3);
 
   db.createMerchantItem({
     name: "wrap",
@@ -72,7 +73,6 @@ createMerchant(req, res)
       itemId: 1 // g_itemId;
     });
   });
-
 });
 
 // console.log(db.itemsTable);

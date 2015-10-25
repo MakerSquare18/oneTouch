@@ -83,13 +83,15 @@ var createMerchant = function(merchantObj) {
 
 // update merchant table global key and item global table merchant localkey
 var createMerchantItem = function(itemObj) {
+  console.log(1);
   itemObj._g_itemId = db.itemsTable.length;
   var _merchantItemId = db.merchants[itemObj.merchantId].items.push(itemObj);
   db.itemsTable.push({
     merchantItemId: _merchantItemId - 1,
     merchantId: itemObj.merchantId
   });
-  return _g_itemId;
+  console.log(2);
+  return itemObj._g_itemId;
 }
 
 // return user obj
