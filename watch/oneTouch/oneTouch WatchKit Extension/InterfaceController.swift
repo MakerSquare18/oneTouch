@@ -78,6 +78,7 @@ class InterfaceController: WKInterfaceController{
         Alamofire.request(.GET, url, parameters: nil)
             .responseJSON{response in
                 var data: JSON = JSON(response.result.value!)
+                print(data)
                 // TODO: Make this programmatic
                 for i in 0...3 {
                     let item = WKPickerItem()

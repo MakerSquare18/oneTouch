@@ -58,7 +58,7 @@ var createUser = function(userObj) {
 // input username
 var createUserPreference = function(preferenceObj) {
   var _username = preferenceObj.username;
-
+  console.log(preferenceObj);
   db.users[_username].preferences.push({
     merchantId: preferenceObj.merchantId,
     itemId: preferenceObj.itemId //g_itemId in itemsTable

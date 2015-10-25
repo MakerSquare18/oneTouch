@@ -35,6 +35,7 @@ createMerchant(req, res)
     description: "Tasty wrap",
     merchantId: "starbucks"
   });
+  
   console.log("Resolved!");
   console.log("Merchant: ", db.merchants);
   var req = {

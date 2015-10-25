@@ -22,9 +22,9 @@ module.exports = function createUser(req, res) {
       var merchantToken = db.merchants[merchant].auth.token;
       paypal.storeCreditCard(merchantToken, newUsername, newUserCreditCard)
       .then(function(creditCardVault) {
+        vaultCounter++;
         db.users[newUsername].creditCardIds[merchant] = creditCardVault.id;
         if (vaultCounter === merchantsArray.length) {
-          console.log(db.users[newUsername].creditCardIds);
           res.send("User created successfully");
           resolve();
         }
