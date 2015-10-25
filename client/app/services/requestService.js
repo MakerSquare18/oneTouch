@@ -1,6 +1,6 @@
 'use strict';
-angular.module('myApp.home', ['ngRoute'])
-.factory("RequestFactory", [function() {
+angular.module('myApp.services', [])
+.factory("RequestFactory", ['$http',function($http) {
   var RequestFactory = {};
   //This endpoint should give me an array of ALL possible preferences
   RequestFactory.getAllPossiblePreferences = function(){
