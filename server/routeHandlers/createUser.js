@@ -7,10 +7,13 @@ module.exports = function createUser(req, res) {
     var newUserPassword = req.body.password;
     var newUserInfo = req.body.userInfo;
     var newUserCreditCard = req.body.creditCard;
+    var newUserProfileUrl = req.body.profileUrl;
+
     var newUser = {
       username: newUsername,
       password: newUserPassword,
       info: newUserInfo,
+      profileUrl: newUserProfileUrl,
       creditCardIds: {},
     };
 

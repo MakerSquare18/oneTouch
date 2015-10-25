@@ -136,7 +136,28 @@ var getUserPrefListByUsername = function(username) {
   });
 
   userInfoMixin["username"] = username;
-  userInfoMixin["profileImg"] = db.users[username].profileImg;
+  userInfoMixin["profileUrl"] = db.users[username].profileUrl;
+  userInfoMixin.preferences = preferenceMixin;
+  return userInfoMixin;
+}
+
+var getMixinPrefListByUsername = function(username) {
+  var userInfoMixin = {};
+  var preferenceMixin = [];
+  var _merchantId, _itemId;
+  db.users[username].preferences.forEach(function(preference) {
+    _merchantId = preference.merchantId;
+    _itemId = preference.itemId;
+    preferenceMixin.push({
+      // db.merchants[_merchantId].
+      itemInfo: db.merchants[_merchantId].items[_itemId],
+      itemId: _itemId,
+      merchantId: db.merchants[_merchantId].merchantName
+    });
+  });
+
+  userInfoMixin["username"] = username;
+  userInfoMixin["profileUrl"] = db.users[username].profileUrl;
   userInfoMixin.preferences = preferenceMixin;
   return userInfoMixin;
 }
