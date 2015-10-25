@@ -10,10 +10,17 @@ import WatchKit
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // Store loaded preferences data here
     var userData: JSON = nil
+    
+    // Hardcoded for demo purposes
+    let hackathonLatitude: String = "36.121174"
+    let hackathonLongitude: String = "-115.1718413"
+    
+    var locationFixAchieved: Bool = false
     
     // Array of picker items that will be populated when AJAX completes
     var purchasableItems: [WKPickerItem] = []
@@ -84,6 +91,7 @@ class InterfaceController: WKInterfaceController {
                 (_, _, data, _) in
                 self.purchasePicker.setItems(nil)
                 let image = UIImage(data: data! as! NSData)
+                self.purchasePicker.setHidden(true)
                 self.receiptImage.setImage(image)
                 self.addTrashButton()
         }
@@ -99,12 +107,15 @@ class InterfaceController: WKInterfaceController {
     
     func setPurchasableItems() {
 //        hideLoadingBar()
+        purchasePicker.setHidden(false)
         let preferences = self.userData["preferences"]
         var counter: Int = 0;
         var localPurchasableItems: [WKPickerItem] = []
         for _ in preferences {
             let item = WKPickerItem()
-            item.title = self.userData["preferences", counter, "name"].string
+            let itemName: String = self.userData["preferences", counter, "name"].string!
+            let itemPrice: String = String(self.userData["preferences", counter, "price"].int!)
+            item.title = itemName + " - $" + itemPrice
             localPurchasableItems.append(item)
             counter++
         }
@@ -124,6 +135,26 @@ class InterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
+        // Initialize geolocation service
+        var locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        
+        func locationManagerTest(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+            if (locationFixAchieved == false) {
+                locationFixAchieved = true
+                let locationArray = locations as NSArray
+                let locationObj = locationArray.lastObject as! CLLocation
+                let coord = locationObj.coordinate
+                
+                print(coord.latitude)
+                print(coord.longitude)
+            }
+        }
+        
+        print(locationManager.location)
         displayLoading();
         
         // Initialize application with purchase button in context menu
@@ -131,15 +162,13 @@ class InterfaceController: WKInterfaceController {
         
         // AJAX call that loads purchasable items
         let url: String = "http://127.0.0.1:3000/api/user/makersquare18"
-        Alamofire.request(.GET, url, parameters: nil)
+        Alamofire.request(.GET, url, parameters: ["latitude": hackathonLatitude, "longitude": hackathonLongitude])
             .responseJSON {response in
                 self.userData = JSON(response.result.value!)
                 print(self.userData)
                 self.setPurchasableItems()
+                print(locationManager.location)
         }
-        
-        
-        
     }
 
     override func willActivate() {

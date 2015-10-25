@@ -33,9 +33,9 @@ createMerchant(req, res)
   console.log(3);
 
   db.createLocationItem({
-    name: "Great Schwag",
+    name: "Razer",
     merchantId: "starbucks",
-    price: 0,
+    price: 2800,
     latitude: 36.121174,
     longitude: -115.1718413
   });
