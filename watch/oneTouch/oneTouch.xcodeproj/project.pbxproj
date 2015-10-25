@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		130EE4481BDC437700218E0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130EE4471BDC437700218E0A /* Alamofire.framework */; };
 		130EE44A1BDC437900218E0A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130EE4491BDC437900218E0A /* SwiftyJSON.framework */; };
+		130EE44F1BDCD73100218E0A /* FF4D00-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 130EE44E1BDCD73100218E0A /* FF4D00-0.png */; settings = {ASSET_TAGS = (); }; };
 		132506491BDC4233005BF839 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132506481BDC4233005BF839 /* AppDelegate.swift */; };
 		1325064B1BDC4233005BF839 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1325064A1BDC4233005BF839 /* ViewController.swift */; };
 		1325064E1BDC4233005BF839 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1325064C1BDC4233005BF839 /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		130EE4471BDC437700218E0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		130EE4491BDC437900218E0A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		130EE44C1BDCC0A800218E0A /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
+		130EE44E1BDCD73100218E0A /* FF4D00-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FF4D00-0.png"; sourceTree = "<group>"; };
 		132506451BDC4233005BF839 /* oneTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		132506481BDC4233005BF839 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1325064A1BDC4233005BF839 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				132506831BDC4233005BF839 /* InterfaceController.swift */,
 				132506851BDC4233005BF839 /* ExtensionDelegate.swift */,
 				132506871BDC4233005BF839 /* NotificationController.swift */,
+				130EE44E1BDCD73100218E0A /* FF4D00-0.png */,
 				132506891BDC4233005BF839 /* Assets.xcassets */,
 				1325068B1BDC4233005BF839 /* Info.plist */,
 				132506811BDC4233005BF839 /* Supporting Files */,
@@ -390,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				130EE44F1BDCD73100218E0A /* FF4D00-0.png in Resources */,
 				1325068A1BDC4233005BF839 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

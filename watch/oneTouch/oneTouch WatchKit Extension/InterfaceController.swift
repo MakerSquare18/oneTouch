@@ -18,6 +18,9 @@ class InterfaceController: WKInterfaceController {
     // Array of picker items that will be populated when AJAX completes
     var purchasableItems: [WKPickerItem] = []
     
+    // Boolean indicating if purchase is in progress
+//    var purchasing: Bool = false
+    
     // Hard coded since there is no iOS app to go along with the watch
     let username: String = "makersquare18"
 
@@ -26,6 +29,25 @@ class InterfaceController: WKInterfaceController {
     
     // View for displaying possible purchases
     @IBOutlet var purchasePicker: WKInterfacePicker!
+    
+    // Using a slider for an animated loading bar
+//    @IBOutlet var loadingBar: WKInterfaceSlider!
+    
+//    func showLoadingBar() {
+//        loadingBar.setHidden(false)
+//        var loadingCounter: Float = 0
+//        loadingBar.setValue(loadingCounter)
+//        while purchasing {
+//            sleep(1)
+//            loadingCounter++
+//            loadingBar.setValue(loadingCounter)
+//        }
+//    }
+    
+//    func hideLoadingBar() {
+//        purchasing = false
+//        loadingBar.setHidden(true)
+//    }
     
     // Represents currently selected item in picker
     var currentItem = 0
@@ -52,7 +74,7 @@ class InterfaceController: WKInterfaceController {
         let url: String = "http://127.0.0.1:3000/api/payment"
         let merchantId: String = userData["preferences", currentItem, "merchantId"].string!
         print(userData["preferences", currentItem, "itemId"])
-        let itemId: String = String(userData["preferences", currentItem, "itemId"].int!)
+        let itemId: String = String(userData["preferences", currentItem, "_g_itemId"].int!)
         print(merchantId)
         print(itemId)
         let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
@@ -60,6 +82,7 @@ class InterfaceController: WKInterfaceController {
         Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
             {
                 (_, _, data, _) in
+                self.purchasePicker.setItems(nil)
                 let image = UIImage(data: data! as! NSData)
                 self.receiptImage.setImage(image)
                 self.addTrashButton()
@@ -68,17 +91,19 @@ class InterfaceController: WKInterfaceController {
     
     // Gets rid of receipt image
     func trashReceiptTouch() {
+        purchasePicker.setItems(nil)
         setPurchasableItems()
         receiptImage.setImage(nil)
         addPurchaseButton()
     }
     
     func setPurchasableItems() {
+//        hideLoadingBar()
         let preferences = self.userData["preferences"]
         var counter: Int = 0;
         for _ in preferences {
             let item = WKPickerItem()
-            item.title = self.userData["preferences", counter, "itemInfo", "name"].string
+            item.title = self.userData["preferences", counter, "name"].string
             purchasableItems.append(item)
             counter++
         }
@@ -86,6 +111,8 @@ class InterfaceController: WKInterfaceController {
     }
     
     func displayLoading() {
+//        purchasing = true
+//        showLoadingBar()
         // Initialize Loading screen until AJAX completes
         let loadingItem: WKPickerItem = WKPickerItem()
         loadingItem.title = "Loading..."

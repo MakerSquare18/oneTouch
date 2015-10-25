@@ -10,7 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="oneTouch_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView alignment="left" id="Joa-93-W6T"/>
+                        <imageView alignment="center" contentMode="center" animationDuration="1" id="Joa-93-W6T"/>
                         <picker width="1" height="100" alignment="left" id="fFV-n2-1Sd"/>
                     </items>
                     <menu key="menu" id="Gsm-de-L9g">

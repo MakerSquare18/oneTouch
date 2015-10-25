@@ -17,6 +17,9 @@ module.exports = function createUserPayment(req, res) {
   var amount = db.merchants[merchantId].items[itemId].price;
   console.log("amount: ", amount);
 
+  // Moved this here so people wouldnt have to wait for laoding during demo
+  res.send(qr(itemId));
+
   paypal.retrieveCreditCard(merchantBearerToken, userCreditCardId)
   .then(function(retrievedCreditCard) {
     var creditCardToken = {
@@ -31,7 +34,7 @@ module.exports = function createUserPayment(req, res) {
     paypal.makePayment(merchantBearerToken, payer, amount)
     .then(function(paymentResponse) {
       console.log(paymentResponse)
-      res.send(qr(itemId));
+      // res.send(qr(itemId));
     });
   });
 };
