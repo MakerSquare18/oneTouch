@@ -6,13 +6,10 @@ module.exports = function createUser(req, res) {
   var newUserPassword = req.body.password;
   var newUserInfo = req.body.userInfo;
   var newUserCreditCard = req.body.creditCard;
-  var newUserProfileImg = req.body.profileImg;
   var newUser = {
     info: newUserInfo,
     creditCard: null,
-    profileImg: newUserProfileImg
   };
-
 
   paypal.storeCreditCard(db.paypalServerAuth.token, newUsername, newUserCreditCard)
   .then(function(creditCardVault) {

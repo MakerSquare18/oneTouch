@@ -3,8 +3,9 @@ var db = require('./db');
 db.createUser({
   username: "makersquare18",
   info: {
-    name: "Richie",
+    // name: "Richie",
     age: 23,
+    profileImg: "www.google.com"
   },
   creditCard: {
     "number": "4417119669820331",
@@ -53,3 +54,4 @@ db.createUserPreference({
 
 console.log(db.itemsTable);
 console.log(db.merchants["starbucks"].items);
+console.log(db.users);
