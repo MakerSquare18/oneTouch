@@ -1,12 +1,20 @@
 <div id='signup'>
   <h1>Signup</h1>
-  <form name="signupForm" ng-submit='signup()'>
-    <input type="text" ng-model='user.username' placeholder="Username" required>
-    <input type="password" ng-model='user.password' placeholder="Password" required>
+  <form name="signupForm" ng-submit='signupUser()'>
+    <input name="username" type="text" ng-model='user.username' placeholder="Username" required>
+    <input name="password" type="password" ng-model='user.password' placeholder="Password" required>
     <br>
-    <input type="text" ng-model="user.creditCard" payments-validate="card" placeholder="Credit Card Number" required/>
-    <input type="text" ng-model="user.creditCard" payments-validate="expiry" placeholder="Expiration" required/>
-    <input type="text" ng-model="user.creditCard" payments-validate="cvc" placeholder="CVC" required/>
+    <input name="creditcard" type="text" ng-model="user.creditCard" payments-validate="card" ng-minlength="16" ng-maxlength="16" placeholder="Credit Card Number" required/>
+    <input name="expiration" type="text" ng-model="user.expiration" payments-validate="expiry" placeholder="Expiration" required/>
+    <input name="cvc" type="text" ng-model="user.cvc" payments-validate="cvc" placeholder="CVC" ng-minlength="3" ng-maxlength="3" required/>
     <button class="btn btn-default">Signup</button>
   </form>
+
+  <div ng-show='signupForm.username.$error.required || signupForm.password.$error.required'>
+    <h3 class='signup-error'>Username and Password Required</h3>
+  </div>
+
+  <div ng-show="signupForm.creditcard.$error.minlength || signupForm.creditcard.$error.maxlength || signupForm.cvc.$error.minlength || signupForm.cvc.$error.maxlength">
+    <h3 class="signup-error">Please Enter Valid Credit Card Information</h3>  
+  </div>
 </div>

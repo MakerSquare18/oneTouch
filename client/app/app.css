@@ -29,5 +29,10 @@
   margin-left: 70px;
   font-size: 26px;
 }
+
+.signup-error {
+  color: red;
+}
+
 /* angular bootstrap remedy - avoids adding empty href attributes to link tags which cause unwanted route changes */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
