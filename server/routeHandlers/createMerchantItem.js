@@ -6,7 +6,7 @@ module.exports = function createMerchantItem(req, res) {
     price: req.body.item.price,
     description: req.body.description,
     merchantId: req.body.id,
-    imageURL: req.body.imageURL
+    imageUrl: req.body.imageUrl
   });
 
   // global itemTable id
