@@ -10,9 +10,16 @@ import WatchKit
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Foundation
 
 
-class InterfaceController: WKInterfaceController{
+class InterfaceController: WKInterfaceController {
+    
+    var url: NSURL = NSURL(string: "http://apod.nasa.gov/apod/image/1504/Mooooonwalk_rjn_960.jpg")!
+    var data = NSData(contentsOfURL: url)
+            imageURL.image = UIImage(data: data)
+        }
+    }
     
     // Store loaded preferences data here
     var userData: JSON = nil
