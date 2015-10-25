@@ -38,11 +38,18 @@ var db = {
 };
 
 // var createUser = function(userInfo, callback) { shall we make it async?
-var createUser = function(userObj, callback) {
-  if (users[userObj.username] !== undefined) {
+var createUser = function(userObj) {
+  if (db.users[userObj.username] !== undefined) {
     return Error("" + userObj.username + "exists!!");
   }
-  users[userInfo.username] = userObj;
+  db.users[userObj.username] = userObj;
+}
+
+var createMerchant = function(merchantObj) {
+  if (db.merchants[merchantObj.merchantName] !== undefined) {
+    return Error("" + merchantObj.merchantName + "exists!!");
+  }
+  db.merchants[merchantObj.merchantName] = merchantObj;
 }
 
 // return user obj
@@ -79,7 +86,10 @@ var getMixinPrefListByusername = function(username) {
   return preferenceMixin;
 }
 
+
+
 db.createUser = createUser;
+db.createMerchant = createMerchant;
 db.getItemIdByUserPreference = getItemIdByUserPreference;
 db.getUserByName = getUserByName;
 db.getMixinPrefListByUsername = getMixinPrefListByusername;
