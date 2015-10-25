@@ -179,7 +179,6 @@ var getMerchantItem = function(merchantId) {
   return db.merchants[merchantId].items;
 }
 
-
 db.createUser = createUser;
 db.createMerchant = createMerchant;
 db.createMerchantItem = createMerchantItem;
