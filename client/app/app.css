@@ -34,5 +34,15 @@
   color: red;
 }
 
+/* Adjust User Home CSS */
+.prefList {
+  font-size: 130%;
+  font-style: oblique;
+}
+
+.itemHeadline {
+
+}
+
 /* angular bootstrap remedy - avoids adding empty href attributes to link tags which cause unwanted route changes */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

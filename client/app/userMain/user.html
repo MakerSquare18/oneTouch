@@ -7,20 +7,22 @@
       <img align="middle" ng-src={{userData.profileUrl}} class="img-responsive">
     </div>
     <div class="col-xs-8">
-      <h4>Your Saved Items</h4>
+      <h4 class="item-headline">Your Saved Items</h4>
       <div class="table-wrapper">
         <table class="table table-hover">
           <tr ng-repeat="item in userData.preferences">
             <td>
               <img ng-src={{item.imageUrl}} id="small-icon">
             </td>
-            <td>{{item.merchantId}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.price | currency}}</td>
-            <td>{{item.description}}</td>
-            <td>
-              <button ng-click="removeItem(item)" class="btn btn-default">Remove Item</button>
-            </td>
+            <div >
+              <td class="prefList">{{item.merchantId}}</td>
+              <td class="prefList">{{item.name}}</td>
+              <td class="prefList">{{item.price | currency}}</td>
+              <td class="prefList">{{item.description}}</td>
+              <td>
+                <button ng-click="removeItem(item)" class="btn btn-default">Remove Item</button>
+              </td>
+            </div>
           </tr>
         </table>
       </div>
