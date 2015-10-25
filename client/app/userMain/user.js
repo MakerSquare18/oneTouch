@@ -22,6 +22,9 @@ function UserCtrl($scope, UserFactory) {
   $scope.addItem = function(item) {
     console.log(item);
   }; 
+  $scope.removeItem = function(item) {
+    console.log(item);
+  };
 }
 UserCtrl.resolve = {
   getUserData: function(UserFactory) {

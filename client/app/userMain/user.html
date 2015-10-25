@@ -3,21 +3,36 @@
     Welcome, {{userData.username}}
   </div>
   <div class="row">
-    <div class="col-lg-4" id="profile-image">
-      <img ng-src={{userData.profileImg}}>
+    <div class="col-xs-4">
+      <img ng-src={{userData.profileImg}} class="img-responsive">
     </div>
-    <div class="col-lg-8" id="user-items">
-      <div ng-repeat="item in userData.userItems">
-        <div class="user-item">
-          <img ng-src={{item.url}} id="large-icon">
-          <div>{{item.merchant}}</div>
-          <div>{{item.name}}</div>
-          <div>{{item.price}}</div>
-          <div>{{item.description}}</div>
+    <div class="col-xs-8">
+      <h4>Your Saved Items</h4>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input ng-model="searchText" type="text" class="form-control" placeholder="Filter Items">
         </div>
+      </form>
+      <div class="table-wrapper">
+        <table class="table table-hover">
+          <tr ng-repeat="item in userData.userItems | filter:searchText">
+            <td>
+              <img ng-src={{item.url}} id="small-icon">
+            </td>
+            <td>{{item.merchant}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td>
+              <button ng-click="removeItem(item)" class="btn btn-default">Remove Item</button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div class="col-lg-12" id="items-table">
+  </div>
+  <div class="row">
+    <div class="col-xs-12" id="items-table">
       <div id="add-items-header">
         <h4>Search For Items</h4>
         <form class="navbar-form navbar-right" role="search">

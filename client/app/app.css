@@ -1,7 +1,24 @@
 /* app css stylesheet */
+.col-xs-4 {
+  border: 2px solid black;
+}
+
+.col-xs-8 {
+  border: 2px solid black;
+}
+
+.col-xs-12 {
+  border: 2px solid black;
+}
+
 #small-icon {
   height: 20px;
   width: 20px;
 }
+
+.row {
+  padding: 80px;
+}
+
 /* angular bootstrap remedy - avoids adding empty href attributes to link tags which cause unwanted route changes */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
