@@ -8,14 +8,23 @@ angular.module('myApp.merchant', ['ngRoute'])
     controller: 'MerchantCtrl'
   });
 }])
-.controller('MerchantCtrl', ['$scope', function($scope) {
-  $scope.merchantData = {};
-  $scope.merchantData.profileImg = "http://thetshirtgame.com/neon_yolo_you_only_live_once_azalea_pink_bkgd.gif";
-  $scope.merchantData.merchantname = "Starbucks";
-  $scope.merchantData.merchantItems = [];
-  $scope.merchantData.merchantItems[0] = {itemid: 1, name: "Venti Mocha Latte", price: 4.99, description: "Large delicious latte from Starbucks"};
-  $scope.merchantData.merchantItems[1] = {itemid: 2, name: "Large Cheese Pizza", price: 9.99, description: "Delicious cheese pizza from Dominos"};
-  $scope.addMerchantItem = function(item) {
-    $scope.merchantData.merchantItems.push(item);
+.controller('MerchantCtrl', ['$scope', 'MerchantFactory', function($scope, MerchantFactory) {
+  $scope.merchImage = 'http://thetshirtgame.com/neon_yolo_you_only_live_once_azalea_pink_bkgd.gif';
+  $scope.merchName = 'Starbucks Team';
+  $scope.itemData = {};
+  $scope.merch = [];
+  $scope.merch[0] = {name: "Venti Mocha Latte", itemid: 1, price: 4.99, description: "Large delicious latte from Starbucks"};
+  $scope.merch[1] = {name: "Large Cheese Pizza", itemid: 2, price: 9.99, description: "Delicious cheese pizza from Dominos"};
+  $scope.createMercantItem = function(itemData) {
+    MerchantFactory.createMercantItem(itemData);
   };
+  $scope.merchantData = {};
+  $scope.init = function() {
+     var merchant = 'starbucks';
+     MerchantFactory.getMerchantData(merchant)
+      .then(function() {
+        $scope.merchantData = MerchantFactory.allItemData;
+      });
+  };
+  $scope.init();
 }]);
