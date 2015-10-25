@@ -8,6 +8,5 @@ module.exports = function(req, res) {
       accessToken: authTokens.access_token,
       refreshToken: authTokens.refresh_token
     };
-    console.log('Merchant authenticated as: ', authTokens);
   });
 };

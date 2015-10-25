@@ -11,7 +11,11 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="oneTouch_WatchKit_App" customModuleProvider="target">
                     <items>
                         <imageView alignment="center" contentMode="center" animationDuration="1" id="Joa-93-W6T"/>
-                        <picker width="1" height="100" alignment="left" focusStyle="sequence" id="fFV-n2-1Sd">
+                        <label width="134.5" alignment="center" text="Press to Buy" textAlignment="center" id="52M-Vj-8bu">
+                            <color key="textColor" red="0.45539716152052234" green="1" blue="0.46591592991888986" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <picker width="1" height="124" alignment="left" id="fFV-n2-1Sd">
                             <connections>
                                 <action selector="purchasePickerChanged:" destination="AgC-eL-Hgc" id="0TD-P2-ZuT"/>
                             </connections>
@@ -25,10 +29,11 @@
                     <connections>
                         <outlet property="purchasePicker" destination="fFV-n2-1Sd" id="2sQ-hU-kn4"/>
                         <outlet property="receiptImage" destination="Joa-93-W6T" id="Dix-gJ-dEc"/>
+                        <outlet property="textDisplay" destination="52M-Vj-8bu" id="BSP-Kh-5sg"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="355.25"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -54,4 +59,5 @@
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.16165822922500939" blue="0.17842569543364339" alpha="1" colorSpace="calibratedRGB"/>
 </document>

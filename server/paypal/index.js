@@ -105,7 +105,6 @@ function authenticateServer(clientId, secret) {
 }
 
 function storeCreditCard(accessToken, payerId, creditCard){
-  console.log(accessToken);
   return new Promise(function(resolve, reject) {
     request.post(config.ENDPOINT + '/v1/vault/credit-card')
       .set('Content-Type', 'application/json')

@@ -25,6 +25,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // Array of picker items that will be populated when AJAX completes
     var purchasableItems: [WKPickerItem] = []
     
+    // Displays text to user
+    @IBOutlet var textDisplay: WKInterfaceLabel!
+    
     // Boolean indicating if purchase is in progress
 //    var purchasing: Bool = false
     
@@ -99,6 +102,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     self.purchasePicker.setHidden(true)
                     self.receiptImage.setImage(image)
                     self.addTrashButton()
+                    self.textDisplay.setText(self.userData["preferences", self.currentItem, "name"].string!)
             }
         } else {
             let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
@@ -111,6 +115,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     self.purchasePicker.setHidden(true)
                     self.receiptImage.setImage(image)
                     self.addTrashButton()
+                    self.textDisplay.setText(self.userData["preferences", self.currentItem, "name"].string!)
             }
         }
 
@@ -127,6 +132,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     func setPurchasableItems() {
 //        hideLoadingBar()
         purchasePicker.setHidden(false)
+        textDisplay.setText("Press to Buy")
         let preferences = self.userData["preferences"]
         var counter: Int = 0;
         var localPurchasableItems: [WKPickerItem] = []
@@ -139,6 +145,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
             counter++
         }
         self.purchasePicker.setItems(localPurchasableItems)
+        purchasePicker.setSelectedItemIndex(2)
     }
     
     func displayLoading() {
@@ -149,6 +156,10 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         loadingItem.title = "Loading..."
         let pickerLoading: [WKPickerItem] = [loadingItem]
         purchasePicker.setItems(pickerLoading)
+    }
+    
+    func receiptText(name: String) {
+        textDisplay.setText(name)
     }
     
     override func awakeWithContext(context: AnyObject?) {

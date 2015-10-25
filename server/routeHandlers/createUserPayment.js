@@ -8,24 +8,16 @@ module.exports = function createUserPayment(req, res) {
   var merchantId = req.body.merchantId;
   var itemId = req.body.itemId;
 
-  console.log("username:", username);
-  console.log("merchantId", merchantId);
-  console.log("itemId", itemId);
-
   var userCreditCardId = db.users[username].creditCardIds[merchantId];
   var merchantBearerToken = db.merchants[merchantId].auth.token;
-  console.log("merchantBearerToken:", merchantBearerToken);
-  var amount = req.body.itemType ? db.locationItems[itemId].price : db.merchants[merchantId].items[itemId].price;
-  console.log("amount: ", amount);
+  var amount = req.body.itemType ? db.locationItems[itemId].price : db.getMerchantItemInfoFromTableId(itemId).price;
 
   // Moved this here so people wouldnt have to wait for laoding during demo
-  res.send(qr(itemId));
-  console.log('Emailing: ', db.merchants[db.locationItems[itemId].merchantId].info.email);
-  console.log(db);
+  res.send(qr(req.body.itemType ? db.locationItems[itemId].name : db.getMerchantItemInfoFromTableId(itemId).name));
   mail.sendEmail({
     recipient: req.body.itemType ? db.merchants[db.locationItems[itemId].merchantId].info.email : db.merchants[merchantId].info.email,
     subject: "New Transaction!",
-    message: username + " purchased a " + (req.body.itemType ? db.locationItems[itemId].name : db.merchants[merchantId].items[itemId].name) + " from you!"
+    message: username + " purchased a " + (req.body.itemType ? db.locationItems[itemId].name : db.getMerchantItemInfoFromTableId(itemId).name) + " from you!"
   });
 
   paypal.retrieveCreditCard(merchantBearerToken, userCreditCardId)
@@ -34,14 +26,13 @@ module.exports = function createUserPayment(req, res) {
       credit_card_id: userCreditCardId,
       payer_id: retrievedCreditCard.payer_id,
     };
-    console.log("creditCardToken: ", creditCardToken);
     var payer = {
       payment_method: 'credit_card',
       funding_instruments: [{credit_card_token: creditCardToken}]
     };
     paypal.makePayment(merchantBearerToken, payer, amount)
     .then(function(paymentResponse) {
-      console.log(paymentResponse)
+      console.log('payment Success: ', paymentResponse);
       // res.send(qr(itemId));
     });
   });

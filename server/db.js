@@ -69,7 +69,6 @@ var createUser = function(userObj) {
 // input username
 var createUserPreference = function(preferenceObj) {
   var _username = preferenceObj.username;
-  console.log(preferenceObj);
 
   if (db.users[_username] === undefined) {
     return Error("" + _username + " does not exist!!");
@@ -136,12 +135,10 @@ var getUserPrefListByUsername = function(username) {
   var _merchantId, _itemId, _itemInfo;
 
   db.users[username].preferences.forEach(function(preference) {
-    console.log("preference view: ", preference);
     _merchantId = preference.merchantId;
     _g_itemId = preference.itemId;
 
     _itemInfo = getMerchantItemInfoFromTableId(_g_itemId);
-    console.log("item info: ", _itemInfo);
     // query junction table with g_itemOd to find merchant private itemId
     preferenceMixin.push(_itemInfo);
   });
@@ -198,5 +195,6 @@ db.getUserPrefListByUsername = getUserPrefListByUsername;
 db.getAllItems = getAllItems;
 db.getMerchantItem = getMerchantItem;
 db.createLocationItem = createLocationItem;
+db.getMerchantItemInfoFromTableId = getMerchantItemInfoFromTableId;
 
 module.exports = db;

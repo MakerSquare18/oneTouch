@@ -17,7 +17,7 @@ function sendEmail(options) {
     text: options.message
   }, function(error, info) {
     if (error) return console.log(error);
-    console.log('Message sent: ' + info.response);
+    console.log('Email sent: ' + info.response);
   });
 };
 
