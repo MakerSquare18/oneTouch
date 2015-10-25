@@ -82,11 +82,11 @@ angular.module('myApp.services', [])
       return;
     });
   };
-  RequestFactory.signupUser = function(username, password) {
+  RequestFactory.signupUser = function(userData) {
     return $http({
       method: 'POST',
       url: 'api/user/',
-      data: data
+      data: userData
     }).then(function(res) {
       console.log('created user in requestfactory');
       console.log('signupUpser res: ', res);
