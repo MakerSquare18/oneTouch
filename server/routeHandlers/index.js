@@ -7,3 +7,6 @@ exports.getUserPreferences = require('./getUserPreferences');
 exports.paypalAuth = require('./paypalAuth');
 exports.createUserPayment = require('./createUserPayment');
 exports.getMerchantItem = require('./getMerchantItem');
+
+// QR Test only
+exports.createReceiptQR = require('./createReceiptQR');

@@ -18,7 +18,6 @@ app.get('/auth/paypal', paypal.captureAuthorizationCode, routeHandlers.paypalAut
 
 // Payment
 app.post('/api/payment', routeHandlers.createUserPayment);
-
 // User Management Routes
 app.post('/api/merchant', routeHandlers.createMerchant);
 app.post('/api/merchant/item', routeHandlers.createMerchantItem);
@@ -28,6 +27,9 @@ app.get('/api/items', routeHandlers.getAllItems);
 // app.get('/api/user/:username/items', routeHandlers.getUserPreferences);
 app.get('/api/user/:username', routeHandlers.getUserPreferences);
 app.get('/api/merchant/:merchantname', routeHandlers.getMerchantItem);
+
+// QR test only
+app.get('/api/user/qr/:id', routeHandlers.createReceiptQR);
 
 app.listen(config.port, function() {
   paypal.authenticateServer(paypalConfig.CLIENT_ID, paypalConfig.SECRET)
