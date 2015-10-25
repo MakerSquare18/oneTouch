@@ -10,11 +10,11 @@
       <h4>Your Saved Items</h4>
       <div class="table-wrapper">
         <table class="table table-hover">
-          <tr ng-repeat="item in userData.userItems">
+          <tr ng-repeat="item in userData.preferences">
             <td>
-              <img ng-src={{item.url}} id="small-icon">
+              <img ng-src={{item.imageUrl}} id="small-icon">
             </td>
-            <td>{{item.merchant}}</td>
+            <td>{{item.merchantId}}</td>
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.description}}</td>
@@ -38,16 +38,17 @@
       </div>
       <div class="table-wrapper">
         <table class="table table-hover">
-          <tr ng-repeat="item in userData.userItems | filter:searchText">
+          <tr ng-repeat="item in allPreferences | filter:searchText">
             <td>
-              <img ng-src={{item.url}} id="small-icon">
+              <img ng-src={{item.imageUrl}} id="small-icon">
             </td>
-            <td>{{item.merchant}}</td>
+
+            <td>{{item.merchantId}}</td>
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.description}}</td>
             <td>
-              <button ng-click="addItem(item)" class="btn btn-default">Add Item</button>
+              <button ng-click="addItem($index)" class="btn btn-default">Add Item</button>
             </td>
           </tr>
         </table>

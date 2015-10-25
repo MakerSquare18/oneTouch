@@ -38,10 +38,10 @@ angular.module('myApp.user')
       var userPrefs = context.userData.preferences;
       var lookupObj = {};
       for(var j=0; j<userPrefs.length; j++){
-        lookupObj[userPrefs[j].itemId] = true;
+        lookupObj[userPrefs[j]["_g_itemId"]] = true;
       }
       for(var i=0; i<unfiltered.length; i++){
-        if(!lookupObj[unfiltered[i].itemId]){
+        if(!lookupObj[unfiltered[i][["_g_itemId"]]]){
           context.allPreferences.push(unfiltered[i]);
         }
       }
