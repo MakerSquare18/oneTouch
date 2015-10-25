@@ -55,8 +55,9 @@ angular.module('myApp.user')
     var context = this;
     var addedPref = context.allPreferences.splice(prefIndex, 1)[0];
     RequestFactory.addPreference(
-      {prefId: addedPref.itemId, 
-      username: context.userData.username});
+      { username: context.userData.username,
+        itemId: addedPref.itemId,
+        merchantId: addedPref.merchantId});
     context.userData.preferences.push(addedPref);
 
   }

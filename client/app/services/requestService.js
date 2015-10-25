@@ -65,11 +65,12 @@ angular.module('myApp.services', [])
   //POST a new preference to the user's watch display
   //TODO: confer w/ Ian about format of data
   RequestFactory.addPreference = function(data){
+    console.log("adding pref!");
     var username = "makersquare18";
     console.log('in addPreference req fac');
     return $http({
       method: 'POST',
-      url: '/api/user/'+ username,
+      url: '/api/user/item',
       data: data
     }).then(function(res){
       console.log('posted pref');
@@ -77,7 +78,7 @@ angular.module('myApp.services', [])
       console.log('add preference res: ', res);
       return res.data;
     },function(error) {
-      console.log("problem getting user data: ",error);
+      console.log("problem posting pref: ",error);
       return;
     });
   };
