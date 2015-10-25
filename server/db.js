@@ -59,14 +59,15 @@ var createUser = function(userObj) {
 var createUserPreference = function(preferenceObj) {
   var _username = preferenceObj.username;
   console.log(preferenceObj);
-  db.users[_username].preferences.push({
-    merchantId: preferenceObj.merchantId,
-    itemId: preferenceObj.itemId //g_itemId in itemsTable
-  });
 
   if (db.users[_username] === undefined) {
     return Error("" + _username + " does not exist!!");
   }
+
+  return db.users[_username].preferences.push({
+    merchantId: preferenceObj.merchantId,
+    itemId: preferenceObj.itemId //g_itemId in itemsTable
+  });
 };
 
 var createMerchant = function(merchantObj) {

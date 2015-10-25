@@ -1,11 +1,11 @@
 var db = require('../db');
 module.exports = function createUserPreference(req, res) {
-  var newPreferenceUsername = req.body.username;
-  newPreferenceMerchantId = req.body.merchantId;
-  var newPreferenceItemId = req.body.itemId;
-  var newPreferenceIndex = db.users[newPreferenceUsername].preferences.push({
-    merchantId: newPreferenceMerchantId,
-    itemId: newPreferenceItemId
+
+  var newPreferenceIndex = db.createUserPreference({
+    username: req.body.username,
+    merchantId: req.body.merchantId,
+    itemId: req.body.itemId || 0
   });
+
   res.send(newPreferenceIndex);
 };

@@ -83,7 +83,6 @@ createMerchant(req, res)
       username: "makersquare18",
       merchantId: "starbucks",
       itemId: 0
-
     });
 
     db.createUserPreference({
