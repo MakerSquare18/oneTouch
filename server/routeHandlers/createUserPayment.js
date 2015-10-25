@@ -2,9 +2,13 @@ var db = require('../db');
 var paypal = require('../paypal');
 
 module.exports = function createUserPayment(req, res) {
+  var username = req.body.username;
   var merchantId = req.body.merchantId;
   var itemId = req.body.itemId;
-  var username = req.body.username;
+
+  console.log("username:", username);
+  console.log("merchantId", merchantId);
+  console.log("itemId", itemId);
 
   var userCreditCardId = db.users[username].creditCardIds[merchantId];
   var merchantBearerToken = db.merchants[merchantId].auth.token;

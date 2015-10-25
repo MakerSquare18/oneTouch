@@ -13,6 +13,12 @@ import SwiftyJSON
 
 
 class InterfaceController: WKInterfaceController{
+    
+    // Store loaded preferences data here
+    var userData: JSON = nil
+    
+    // Hard coded since there is no iOS app to go along with the watch
+    let username: String = "makersquare18"
 
     // Receipt Image Displayer --- May change this to text based receipts
     @IBOutlet var receiptImage: WKInterfaceImage!
@@ -42,8 +48,13 @@ class InterfaceController: WKInterfaceController{
     
     // Sends a psot request to server to purchase item
     func purchaseButtonTouch() {
-        let url: String = "http://127.0.0.1:3000/api/purchase"
-        let parameters = ["itemId": currentItem]
+        let url: String = "http://127.0.0.1:3000/api/payment"
+        let merchantId: String = userData["preferences", currentItem, "merchantId"].string!
+        print(userData["preferences", currentItem, "itemId"])
+        let itemId: String = String(userData["preferences", currentItem, "itemId"].int!)
+        print(merchantId)
+        print(itemId)
+        let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
         Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON)
             .responseJSON{response in
                 self.receiptImage.setImageNamed("testReceipt.png")
@@ -76,14 +87,16 @@ class InterfaceController: WKInterfaceController{
         // AJAX call that loads purchasable items
         let url: String = "http://127.0.0.1:3000/api/user/makersquare18"
         Alamofire.request(.GET, url, parameters: nil)
-            .responseJSON{response in
-                var data: JSON = JSON(response.result.value!)
-                print(data)
-                // TODO: Make this programmatic
-                for i in 0...3 {
+            .responseJSON {response in
+                self.userData = JSON(response.result.value!)
+                print(self.userData)
+                let preferences = self.userData["preferences"]
+                var counter: Int = 0;
+                for _ in preferences {
                     let item = WKPickerItem()
-                    item.title = data["preferences", i, "itemInfo", "name"].string
+                    item.title = self.userData["preferences", counter, "itemInfo", "name"].string
                     purchasableItems.append(item)
+                    counter++
                 }
                 self.purchasePicker.setItems(purchasableItems)
         }

@@ -8,6 +8,7 @@ var db = require('./db');
 var app = express();
 
 app.use(bodyParser.json());
+app.disable('etag');
 
 app.use(express.static("../client/app"));
 
