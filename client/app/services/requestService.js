@@ -49,6 +49,7 @@ angular.module('myApp.services', [])
   };
   //this endpoint gets all information related to merchant items for a given merchant
   RequestFactory.getMerchantData = function(merchant) {
+    console.log("Merchant is:", merchant);
     return $http({
       method: 'GET',
       url: '/api/merchant/'+ merchant,
