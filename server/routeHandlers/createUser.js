@@ -7,15 +7,22 @@ module.exports = function createUser(req, res) {
   var newUserInfo = req.body.userInfo;
   var newUserCreditCard = req.body.creditCard;
   var newUser = {
+    username: newUsername,
+    password: newUserPassword,
     info: newUserInfo,
     creditCard: null,
   };
 
+<<<<<<< HEAD
+=======
+  db.createUser(newUser);
+  // console.log(newUserCreditCard);
+>>>>>>> [Feature] Changed merchant authentication method
   paypal.storeCreditCard(db.paypalServerAuth.token, newUsername, newUserCreditCard)
   .then(function(creditCardVault) {
-    newUser.creditCard = creditCardVault.id;
-    // db.users[newUsername] = newUser;
-    db.createUser(newUser);
+    db.users[newUsername].creditCard = creditCardVault.id;
+    // console.log(db.users[newUsername]);
+    // console.log(creditCardVault);
     res.send("User created successfully");
   });
 };

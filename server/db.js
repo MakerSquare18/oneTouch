@@ -74,8 +74,8 @@ var createMerchant = function(merchantObj) {
     return Error("" + merchantObj.merchantName + "exists!!");
   }
   merchantObj.auth ={
-    bearer: null,
-    refresh: null
+    token: null,
+    expiresIn: null
   };
   merchantObj.items = merchantObj.items || [];
   db.merchants[merchantObj.merchantName] = merchantObj;

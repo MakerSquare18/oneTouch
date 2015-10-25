@@ -61,7 +61,7 @@ function requestRefreshToken(refreshToken) {
 };
 
 // Incomplete
-function makePayment(accessToken, payer, amount) {
+function makePayment(accessToken, payer, price) {
   return new Promise(function(resolve, reject) {
     request.post(config.ENDPOINT + '/v1/payments/payment')
     .set('Content-Type', 'application/json')
@@ -70,21 +70,27 @@ function makePayment(accessToken, payer, amount) {
     .send({payer: payer})
     // Only supports one transaction right now
     .send({transactions: [
-      {amount: amount}
+      {amount: {
+        total: price,
+        currency: "USD"
+      }}
     ]})
-
+    .end(function(err, response) {
+      if (err) console.log(err);
+      resolve(response.body);
+    })
   });
 };
 
 // Gets a token for the server account - not on behalf of another user
 // Need these for credit card vault
-function authenticateServer() {
+function authenticateServer(clientId, secret) {
   // Return a promise so it .then(bearerToken) can be chained
   return new Promise(function(resolve, reject) {
     request.post(config.ENDPOINT + '/v1/oauth2/token')
       .set('Accept', 'application/json')
       .set('Accept-Langage', 'en_US')
-      .auth(config.CLIENT_ID, config.SECRET)
+      .auth(clientId, secret)
       .query({grant_type: 'client_credentials'})
         .end(function(err, response) {
         // Contains the following properties:
@@ -116,7 +122,7 @@ function storeCreditCard(accessToken, payerId, creditCard){
         billing_address: creditCard.billingAddress
       })
       .end(function(err, response) {
-        // console.log(err);
+        if (err) console.log(err);
         resolve(response.body);
       });
   });
@@ -140,3 +146,4 @@ exports.requestRefreshToken = requestRefreshToken;
 exports.authenticateServer = authenticateServer;
 exports.storeCreditCard = storeCreditCard;
 exports.retrieveCreditCard = retrieveCreditCard;
+exports.makePayment = makePayment;
