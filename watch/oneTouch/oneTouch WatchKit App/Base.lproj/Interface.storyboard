@@ -11,7 +11,11 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="oneTouch_WatchKit_App" customModuleProvider="target">
                     <items>
                         <imageView alignment="center" contentMode="center" animationDuration="1" id="Joa-93-W6T"/>
-                        <picker width="1" height="100" alignment="left" focusStyle="sequence" id="fFV-n2-1Sd"/>
+                        <picker width="1" height="100" alignment="left" focusStyle="sequence" id="fFV-n2-1Sd">
+                            <connections>
+                                <action selector="purchasePickerChanged:" destination="AgC-eL-Hgc" id="0TD-P2-ZuT"/>
+                            </connections>
+                        </picker>
                     </items>
                     <menu key="menu" id="Gsm-de-L9g">
                         <items>

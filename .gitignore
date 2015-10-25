@@ -5,3 +5,6 @@ client/bower_components/
 .idea
 server/node_modules
 watch/oneTouch/Carthage
+server/config.js
+server/paypal/paypalConfig.js
+server/testData.js

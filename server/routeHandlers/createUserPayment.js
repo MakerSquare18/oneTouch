@@ -1,6 +1,7 @@
 var db = require('../db');
 var paypal = require('../paypal');
 var qr = require('../qr');
+var mail = require('../mail');
 
 module.exports = function createUserPayment(req, res) {
   var username = req.body.username;
@@ -14,11 +15,17 @@ module.exports = function createUserPayment(req, res) {
   var userCreditCardId = db.users[username].creditCardIds[merchantId];
   var merchantBearerToken = db.merchants[merchantId].auth.token;
   console.log("merchantBearerToken:", merchantBearerToken);
-  var amount = db.merchants[merchantId].items[itemId].price;
+  var amount = req.body.itemType ? db.locationItems[itemId].price : db.merchants[merchantId].items[itemId].price;
   console.log("amount: ", amount);
 
   // Moved this here so people wouldnt have to wait for laoding during demo
   res.send(qr(itemId));
+  console.log('Emailing: ', db.merchants[merchantId].info.email);
+  mail.sendEmail({
+    recipient: req.body.itemType ? db.merchants[db.locationItems[itemId].merchantId].info.email : db.merchants[merchantId].info.email,
+    subject: "New Transaction!",
+    message: username + " purchased a " + (req.body.itemType ? db.locationItems[itemId].name : db.merchants[merchantId].items[itemId].name) + " from you!"
+  });
 
   paypal.retrieveCreditCard(merchantBearerToken, userCreditCardId)
   .then(function(retrievedCreditCard) {

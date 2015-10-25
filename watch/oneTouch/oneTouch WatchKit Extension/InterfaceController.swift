@@ -37,6 +37,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // View for displaying possible purchases
     @IBOutlet var purchasePicker: WKInterfacePicker!
     
+    @IBAction func purchasePickerChanged(newItem: Int) {
+        currentItem = newItem;
+        print(currentItem)
+    }
+    
     // Using a slider for an animated loading bar
 //    @IBOutlet var loadingBar: WKInterfaceSlider!
     
@@ -60,9 +65,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     var currentItem = 0
     
     // Callback to update current item whenever selected item in picker changes
-    @IBAction func pickerItemChanged(newItem: Int) {
-        currentItem = newItem;
-    }
+   
     
     // Sets the context menu to a purchase button
     func addPurchaseButton() {
@@ -84,17 +87,33 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         let itemId: String = String(userData["preferences", currentItem, "_g_itemId"].int!)
         print(merchantId)
         print(itemId)
-        let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
-        displayLoading()
-        Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
-            {
-                (_, _, data, _) in
-                self.purchasePicker.setItems(nil)
-                let image = UIImage(data: data! as! NSData)
-                self.purchasePicker.setHidden(true)
-                self.receiptImage.setImage(image)
-                self.addTrashButton()
+        if let itemType: String = userData["preferences", currentItem, "type"].string {
+            let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId, "itemType": itemType]
+            print(parameters)
+            displayLoading()
+            Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
+                {
+                    (_, _, data, _) in
+                    self.purchasePicker.setItems(nil)
+                    let image = UIImage(data: data! as! NSData)
+                    self.purchasePicker.setHidden(true)
+                    self.receiptImage.setImage(image)
+                    self.addTrashButton()
+            }
+        } else {
+            let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId]
+            displayLoading()
+            Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
+                {
+                    (_, _, data, _) in
+                    self.purchasePicker.setItems(nil)
+                    let image = UIImage(data: data! as! NSData)
+                    self.purchasePicker.setHidden(true)
+                    self.receiptImage.setImage(image)
+                    self.addTrashButton()
+            }
         }
+
     }
     
     // Gets rid of receipt image

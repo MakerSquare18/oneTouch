@@ -1,5 +1,0 @@
-exports.ACCOUNT = "makersquare18-facilitator@gmail.com"
-exports.ENDPOINT = "https://api.sandbox.paypal.com"
-exports.CLIENT_ID = "ASBXFrqFhpyoPdiEzDz5JhCJ1NbJ3nB5HUlxR61ZelS9vVYUOKkiKnWv-neV8XtWieeiNTmokDOU4BnU"
-exports.SECRET = "EN6KCitt8ofhk8J1J-8sJ5ma-cWGLvE-GLN8rnqL2ESpQDiaUsdGb9_Z3m0eSU6haP8yjMzij5R7AVX3"
-exports.REDIRECT_URI = "http://127.0.0.1:3000/auth/paypal"

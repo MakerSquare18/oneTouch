@@ -21,7 +21,7 @@ module.exports = function createMerchant(req, res) {
       }
     });
 
-    nearbyItems.forEach(function(nearbyItem) {
+    nearbyItems.forEach(function(nearbyItem, index) {
       userInfoDump.preferences.push(nearbyItem);
     });
   }
