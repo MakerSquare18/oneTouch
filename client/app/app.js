@@ -8,6 +8,7 @@ angular.module('myApp', [
   'myApp.version',
   'myApp.auth',
   'myApp.home',
+  'myApp.nav',
   'myApp.services',
   'ui.bootstrap'
 ]).

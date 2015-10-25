@@ -18,7 +18,7 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" ng-controller="NavCtrl">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -34,10 +34,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#/user">User <span class="sr-only">(current)</span></a></li>
-        <li><a href="#/merchant">Merchant</a></li>
-        <li><a href="#/merchantSignup">Merchant Sign Up</a></li>
-        <li><a href="#/userSignup">Customer Sign Up</a></li>
+        <li ng-class="{active: tab === 1}"><a href="#/user"ng-click="tab = 1">User <span class="sr-only">(current)</span></a></li>
+        <li ng-class="{active: tab === 2}"><a href="#/merchant" ng-click="tab = 2">Merchant</a></li>
+        <li ng-class="{active: tab === 3}"><a href="#/merchantSignup" ng-click="tab = 3">Merchant Sign Up</a></li>
+        <li ng-class="{active: tab === 4}"><a href="#/userSignup" ng-click="tab = 4">Customer Sign Up</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/login">Login</a></li>
@@ -61,6 +61,7 @@
   <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="app.js"></script>
   <script src="home/home.js"></script>
+  <script src="home/nav.js"></script>
   <script src="auth/auth.js"></script>
   <script src="auth/authServices.js"></script>
   <script src="userMain/user.js"></script>
