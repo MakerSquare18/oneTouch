@@ -26,10 +26,7 @@ app.post('/api/user/item', routeHandlers.createUserPreference);
 app.get('/api/items', routeHandlers.getAllItems);
 // app.get('/api/user/:username/items', routeHandlers.getUserPreferences);
 app.get('/api/user/:username', routeHandlers.getUserPreferences);
-app.get('/api/merchant/:merchantname', routeHandlers.getMerchantItem);
-
-// QR test only
-app.get('/api/user/qr/:id', routeHandlers.createReceiptQR);
+app.get('/api/merchant/:merchantName', routeHandlers.getMerchantItem);
 
 app.listen(config.port, function() {
   paypal.authenticateServer(paypalConfig.CLIENT_ID, paypalConfig.SECRET)

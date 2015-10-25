@@ -1,6 +1,6 @@
 'use strict';
 angular.module('myApp.services', [])
-.factory("RequestFactory", ['$http',function($http) {
+.factory('RequestFactory', ['$http',function($http) {
   var RequestFactory = {};
   //This endpoint should give me an array of ALL possible preferences
   RequestFactory.getAllPossiblePreferences = function(){
@@ -12,7 +12,7 @@ angular.module('myApp.services', [])
       console.log('pref data: ', res.data);
       return res.data;
     },function(error) {
-      console.log("problem getting allPref data: ",error);
+      console.log('problem getting allPref data: ',error);
       return;
     });
   };
@@ -30,7 +30,35 @@ angular.module('myApp.services', [])
       console.log('user data: ', res);
       return res.data;
     },function(error) {
-      console.log("problem getting user data: ",error);
+      console.log('problem getting user data: ',error);
+      return;
+    });
+  };
+  //this endpoint sends and object containing name, price, and description properties for a new merchant item being created
+  RequestFactory.createMerchantItem = function(itemData) {
+    return $http({
+      method: 'POST',
+      url: '/api/merchant/item'
+    }).then(function(res) {
+      console.log('created merchant item!');
+      return res.data;
+    }, function(error) {
+      console.log('problem creating a new merchant item: ', error);
+      return;
+    });
+  };
+  //this endpoint gets all information related to merchant items for a given merchant
+  RequestFactory.getMerchantData = function(merchant) {
+    console.log("Merchant is:", merchant);
+    return $http({
+      method: 'GET',
+      url: '/api/merchant/'+ merchant,
+    }).then(function(res) {
+      console.log('got merchant data!');
+      console.log('res: ', res);
+      return res.data;
+    }, function(error) {
+      console.log('problem getting merchant data: ', error);
       return;
     });
   };
