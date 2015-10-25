@@ -30,7 +30,7 @@
 }
 
 .item-headline {
-  font: 200 50px/1.3 Helvetica, 'Oleo Script', sans-serif;
+  font: 200 50px/1.3 'Oleo Script', Helvetica, sans-serif;
   font-weight: 230;
   color: #2b2b2b;
   text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
