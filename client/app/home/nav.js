@@ -3,5 +3,9 @@
 angular.module('myApp.nav', [])
 
 .controller('NavCtrl', ["$scope","$location",function($scope, $location) {
-  $scope.tab = 1; 
+  var locationObj ={"/user": 1,
+                    "/merchant": 2,
+                    "/merchantSignup": 3,
+                    "/userSignup": 4 }
+  $scope.tab = locationObj[$location.path()];
 }]);
