@@ -28,9 +28,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // Displays text to user
     @IBOutlet var textDisplay: WKInterfaceLabel!
     
-    // Boolean indicating if purchase is in progress
-//    var purchasing: Bool = false
-    
     // Hard coded since there is no iOS app to go along with the watch
     let username: String = "makersquare18"
 
@@ -40,34 +37,14 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     // View for displaying possible purchases
     @IBOutlet var purchasePicker: WKInterfacePicker!
     
-    @IBAction func purchasePickerChanged(newItem: Int) {
-        currentItem = newItem;
-        print(currentItem)
-    }
-    
-    // Using a slider for an animated loading bar
-//    @IBOutlet var loadingBar: WKInterfaceSlider!
-    
-//    func showLoadingBar() {
-//        loadingBar.setHidden(false)
-//        var loadingCounter: Float = 0
-//        loadingBar.setValue(loadingCounter)
-//        while purchasing {
-//            sleep(1)
-//            loadingCounter++
-//            loadingBar.setValue(loadingCounter)
-//        }
-//    }
-    
-//    func hideLoadingBar() {
-//        purchasing = false
-//        loadingBar.setHidden(true)
-//    }
     
     // Represents currently selected item in picker
     var currentItem = 0
     
     // Callback to update current item whenever selected item in picker changes
+    @IBAction func purchasePickerChanged(newItem: Int) {
+        currentItem = newItem;
+    }
    
     
     // Sets the context menu to a purchase button
@@ -86,15 +63,11 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     func purchaseButtonTouch() {
         let url: String = "http://127.0.0.1:3000/api/payment"
         let merchantId: String = userData["preferences", currentItem, "merchantId"].string!
-        print(userData["preferences", currentItem, "itemId"])
         let itemId: String = String(userData["preferences", currentItem, "_g_itemId"].int!)
         let itemIdInt: Int = currentItem
-        print("itemIdInt is ", itemIdInt)
-        print(merchantId)
-        print(itemId)
+
         if let itemType: String = userData["preferences", currentItem, "type"].string {
             let parameters = ["username": username, "merchantId": merchantId, "itemId": itemId, "itemType": itemType]
-            print(parameters)
             Alamofire.request(.POST, url, parameters: parameters, encoding:.JSON).response()
                 {
                     (_, _, data, _) in
@@ -103,7 +76,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     self.purchasePicker.setHidden(true)
                     self.receiptImage.setImage(image)
                     self.addTrashButton()
-                    print("itemIdInt is ", itemIdInt)
                     self.textDisplay.setText(self.userData["preferences", itemIdInt, "name"].string!)
             }
             displayLoading()
@@ -117,7 +89,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                     self.purchasePicker.setHidden(true)
                     self.receiptImage.setImage(image)
                     self.addTrashButton()
-                    print("itemIdInt is ", itemIdInt)
                     self.textDisplay.setText(self.userData["preferences", itemIdInt, "name"].string!)
             }
             displayLoading()
@@ -134,7 +105,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     }
     
     func setPurchasableItems() {
-//        hideLoadingBar()
         purchasePicker.setHidden(false)
         textDisplay.setText("Press to Buy")
         let preferences = self.userData["preferences"]
@@ -153,8 +123,6 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     }
     
     func displayLoading() {
-//        purchasing = true
-//        showLoadingBar()
         // Initialize Loading screen until AJAX completes
         let loadingItem: WKPickerItem = WKPickerItem()
         loadingItem.title = "Loading..."
@@ -182,13 +150,9 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
                 let locationArray = locations as NSArray
                 let locationObj = locationArray.lastObject as! CLLocation
                 let coord = locationObj.coordinate
-                
-                print(coord.latitude)
-                print(coord.longitude)
             }
         }
         
-        print(locationManager.location)
         displayLoading();
         
         // Initialize application with purchase button in context menu
@@ -199,9 +163,7 @@ class InterfaceController: WKInterfaceController, CLLocationManagerDelegate {
         Alamofire.request(.GET, url, parameters: ["latitude": hackathonLatitude, "longitude": hackathonLongitude])
             .responseJSON {response in
                 self.userData = JSON(response.result.value!)
-                print(self.userData)
                 self.setPurchasableItems()
-                print(locationManager.location)
         }
     }
 
