@@ -31,7 +31,7 @@ Once a user has made an account, they are presented with the user dashboard wher
 
 ### Apple Watch Application
 
-When a user opens the oneTouch application on their Apple Watch, they are presented with a list of all their favorite product which they can purchase by force-pressing the screen.
+When a user opens the oneTouch application on their Apple Watch, they are presented with a list of all their favorite product which they can purchase by force-pressing the screen. Funds will be automatically transferred from the user's vaulted credit card to the merchants PayPal account. The user will receive a QR code which they can use as real-life proof that they've paid for an item. In addition, the merchant receives an email containing details of the transaction (for their own records, or in case the purchase requires the merchant to ship the product to the user.)
 
 ![](http://g.recordit.co/acBQJ0RaFS.gif)
 
