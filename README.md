@@ -34,6 +34,7 @@ Once a user has made an account, they are presented with the user dashboard wher
 When a user opens the oneTouch application on their Apple Watch, they are presented with a list of all their favorite product which they can purchase by force-pressing the screen.
 
 ![](http://g.recordit.co/acBQJ0RaFS.gif)
+
 **Note**: A mouse cursor appear in that gif because the Apple Watch application is running in a simulator.
 
 oneTouch also supports geo-specific purchases, so the watch application will also populate the list with products that are available for purchase within a small radius of the user's location. For example, in the gif above all the coffee-related items are appearing on the watch because the used added them to his preferences list, but the hot dog and nachos options are appearing due to the users location.
