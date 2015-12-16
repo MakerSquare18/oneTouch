@@ -30,8 +30,9 @@ angular.module('myApp.user')
     var context = this;
     //all will wait until both of our calls are resolved, so we never filter before both have been resolved
     return $q.all([context.getUserData(), context.getAllPossiblePreferences()]).then(
-    //cover your eyes shit's about to get hacky. I iterate though the array of user prefs and store their ids in a lookup Obj.
+    //I iterate though the array of user prefs and store their ids in a lookup Obj.
     //Then I iterate through the allPrefs object and remove any with matching ids, which should be unique
+    //Ideally this would be refactored to reduce the computing cost of iterating twice
     function(){
       context.allPreferences = [];
       var unfiltered = context.allPreferencesUnfiltered;
