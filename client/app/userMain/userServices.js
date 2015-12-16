@@ -24,7 +24,7 @@ angular.module('myApp.user')
         context.allPreferencesUnfiltered = data});
   };
 
-  //Ok due to Brendan's questionable design choices, this function is needed to
+  //This function is needed to
   //properly filter duplicates out of the allPossiblePreferences
   UserFactory.resolver = function(){
     var context = this;
