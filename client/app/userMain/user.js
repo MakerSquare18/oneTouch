@@ -17,7 +17,6 @@ function UserCtrl($scope, UserFactory) {
   console.log("userData in ctrl: ", $scope.userData);
   console.log("allPreferences in ctrl: ", $scope.allPreferences);
   //TODO: remove dummy data and refactor view so it works
-  //TODO: consider using watchers here
   $scope.addItem = function(itemIndex) {
     console.log("messing w/ ", itemIndex);
     UserFactory.addPreference(itemIndex);
