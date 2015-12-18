@@ -19,7 +19,7 @@ angular.module('myApp.services', [])
   //this endpoint should give me an object with username, user prof, and an array
   //of all the users selected preferences.
   RequestFactory.getUserData = function(username){
-    //TODO: don't hardcode username lol get it from auth factory
+    //TODO: don't hardcode username, get it from auth factory
     var username = "makersquare18";
     console.log("in getUserData req fac");
     return $http({
